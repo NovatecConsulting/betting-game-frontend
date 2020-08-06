@@ -1,0 +1,49 @@
+{
+  "name": "betting-game-angular",
+  "version": "0.0.1",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "jest",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "eslint --ext .ts src --quiet --fix",
+    "format": "prettier --write \"**/*.{js,ts,css,scss,md,json,yml}\"",
+    "format:html": "prettier --write \"**/*.{html,}\"",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~10.0.5",
+    "@angular/common": "~10.0.5",
+    "@angular/compiler": "~10.0.5",
+    "@angular/core": "~10.0.5",
+    "@angular/forms": "~10.0.5",
+    "@angular/platform-browser": "~10.0.5",
+    "@angular/platform-browser-dynamic": "~10.0.5",
+    "@angular/router": "~10.0.5",
+    "rxjs": "~6.5.5",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1000.4",
+    "@angular/cli": "~10.0.4",
+    "@angular/compiler-cli": "~10.0.5",
+    "@types/jest": "^26.0.9",
+    "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.2.2",
+    "jest-preset-angular": "^8.2.1",
+    "prettier": "^2.0.5",
+    "prettier-eslint": "^11.0.0",
+    "ts-jest": "^26.1.4",
+    "ts-node": "~8.3.0",
+    "typescript": "~3.9.5"
+  }
+}
