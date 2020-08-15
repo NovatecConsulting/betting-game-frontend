@@ -16,7 +16,7 @@
         </linearGradient>
       </defs>
     </svg>
-    <svg class="relative inline-block" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 300 300">
+    <svg class="relative inline-block" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 300 300">
       <path
         id="signet"
         d="M15.06,132.13C-4.9,326.06,62.33,213.91,134,92.59,218.67-50.73,279.32-6.24,291.77,250.73,300.73,435.32,41.23-122,15.06,132.13Z"
@@ -27,6 +27,7 @@
         stroke-width="22"
       ></path>
     </svg>
+    <span class="h-4 overflow-hidden text-xl"> NovaTipp </span>
   </span>
 </template>
 
