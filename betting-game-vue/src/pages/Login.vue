@@ -10,11 +10,18 @@
         class="w-full h-12 bg-gray-200 px-10 mb-4 rounded-full hover:bg-gray-300 focus:outline-none focus:bg-white focus:border-blue-500 appearance-none outline-none border-2 border-gray-200"
         type="password"
       />
-      <button
-        class="login__button p-2 h-12 w-24 rounded-full bg-blue-500 hover:bg-blue-600 text-white font-bold outline-none select-none"
-      >
-        Log in
-      </button>
+      <div class="buttons flex">
+        <button
+          class="buttons__login px-8 h-12 rounded-full bg-blue-500 hover:bg-blue-600 text-white font-bold outline-none select-none mr-4 focus:outline-none"
+        >
+          Log in
+        </button>
+        <button
+          class="buttons__forgot px-8 h-12 rounded-full bg-background font-bold border-2 border-secondary focus:outline-none"
+        >
+          Forgot password
+        </button>
+      </div>
     </div>
   </div>
 </template>

@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.light-theme {
+  --color-primary: #4299e1;
+  --color-secondary: #c05621;
+  --color-background-color: #cccccc;
+}
+.dark-theme {
+  --color-primary: #4299e1;
+  --color-secondary: #c05621;
+  --color-background-color: #000;
+}
