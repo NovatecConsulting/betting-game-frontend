@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.light-theme {
+.light {
   --color-primary: #4299e1;
   --color-secondary: #c05621;
-  --color-background-color: #cccccc;
+  --color-background: #cccccc;
 }
-.dark-theme {
+.dark {
   --color-primary: #4299e1;
   --color-secondary: #c05621;
-  --color-background-color: #000;
+  --color-background: #000;
 }

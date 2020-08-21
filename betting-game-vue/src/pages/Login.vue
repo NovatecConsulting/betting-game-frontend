@@ -26,10 +26,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Login'
-}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component
+export default class Login extends Vue {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

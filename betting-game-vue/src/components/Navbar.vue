@@ -9,23 +9,25 @@
           </router-link>
         </div>
       </div>
+
+      <LanguageSwitcher class="ml-4" />
+      <ThemeSwitcher class="ml-4" />
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
 import routes from '../router/index'
 import Logo from '../components/Logo.vue'
-export default {
-  name: 'Homepage',
-  components: {
-    Logo
-  },
-  data() {
-    return {
-      links: routes.options.routes
-    }
-  }
+import LanguageSwitcher from '../components/LanguageSwitcher.vue'
+import ThemeSwitcher from '../components/ThemeSwitcher.vue'
+
+@Component({
+  components: { Logo, LanguageSwitcher, ThemeSwitcher }
+})
+export default class Homepage extends Vue {
+  links = routes.options.routes
 }
 </script>
 

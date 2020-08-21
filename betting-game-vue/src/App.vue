@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="light-theme">
+  <div id="app" class="light">
     <Navbar />
     <router-view />
   </div>
