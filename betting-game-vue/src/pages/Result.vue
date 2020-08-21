@@ -4,10 +4,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Result'
-}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component
+export default class Result extends Vue {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

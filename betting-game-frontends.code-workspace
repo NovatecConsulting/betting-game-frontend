@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "betting-game-vue"
+	},
+	{
+		"path": "betting-game-angular"
+	},
+	{
+		"path": "betting-game-react"
+	}
+]
+}

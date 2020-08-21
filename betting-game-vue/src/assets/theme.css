@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.light {
+  --color-primary: #4299e1;
+  --color-secondary: #c05621;
+  --color-background: #cccccc;
+}
+.dark {
+  --color-primary: #4299e1;
+  --color-secondary: #c05621;
+  --color-background: #000;
+}

@@ -1,15 +1,16 @@
 <template>
-  <div class="homepage min-w-screen min-h-screen bg-gray-800 grid items-center">
+  <div class="homepage min-w-screen min-h-screen bg-background grid items-center">
     <div class="text-3xl sm:text-6xl text-gray-200 tracking-wide">
-      AWESOME FOOTBALL APP
+      {{ $t('homepage.title') }}
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Homepage'
-}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component
+export default class Homepage extends Vue {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
