@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './Matches.module.css';
 
 const Matches: React.FC = () => (
-  <div className={styles.Matches} data-testid="Matches">
+  <div
+    className='min-h-screen min-w-screen bg-white text-center text-6xl text-black grid items-center tracking-wider'
+    data-testid='Matches'
+  >
     Matches Component
   </div>
 );

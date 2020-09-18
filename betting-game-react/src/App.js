@@ -1,12 +1,13 @@
-import React from 'react'
-import './App.css'
+import React from 'react';
+import './App.css';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <div className='min-h-screen min-w-screen bg-gray-900 text-center text-6xl text-gray-200 grid items-center tracking-wider'>
-      AWESOME BETTING APP
+    <div>
+      <Navbar></Navbar>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './Login.module.css';
 
 const Login: React.FC = () => (
-  <div className={styles.Login} data-testid="Login">
+  <div
+    className='min-h-screen min-w-screen bg-white text-center text-6xl text-black grid items-center tracking-wider'
+    data-testid='Login'
+  >
     Login Component
   </div>
 );

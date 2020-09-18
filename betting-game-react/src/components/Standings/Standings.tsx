@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './Standings.module.css';
 
 const Standings: React.FC = () => (
-  <div className={styles.Standings} data-testid="Standings">
+  <div
+    className='min-h-screen min-w-screen bg-white text-center text-6xl text-black grid items-center tracking-wider'
+    data-testid='Standings'
+  >
     Standings Component
   </div>
 );

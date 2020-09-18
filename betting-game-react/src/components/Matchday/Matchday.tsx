@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './Matchday.module.css';
 
 const Matchday: React.FC = () => (
-  <div className={styles.Matchday} data-testid="Matchday">
+  <div
+    className='min-h-screen min-w-screen bg-white text-center text-6xl text-black grid items-center tracking-wider'
+    data-testid='Matchday'
+  >
     Matchday Component
   </div>
 );

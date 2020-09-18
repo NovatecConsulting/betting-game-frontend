@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from './AboutUs.module.css';
 
 const AboutUs: React.FC = () => (
-  <div className={styles.AboutUs} data-testid="AboutUs">
-    AboutUs Component
+  <div
+    className='min-h-screen min-w-screen bg-white text-center text-6xl text-black grid items-center tracking-wider'
+    data-testid='AboutUs'
+  >
+    About us Component
   </div>
 );
 
