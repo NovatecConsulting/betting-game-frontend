@@ -6,9 +6,8 @@ import Navbar from './Navbar';
 describe('<Navbar />', () => {
   test('it should mount', () => {
     render(<Navbar />);
-    
-    const navbar = screen.getByTestId('Navbar');
 
+    const navbar = screen.getByTestId('Navbar');
     expect(navbar).toBeInTheDocument();
   });
 });
