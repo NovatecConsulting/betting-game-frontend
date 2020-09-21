@@ -25,6 +25,7 @@ const Navbar: React.FC = () => (
             to='/matches'
             className='block mt-4 lg:inline-block lg:mt-0 py-2 border-b-2 border-transparent rounded-mdw-auto inline-block text-gray-400 hover:text-white mr-4'
             activeClassName='border-gray-400 text-indigo-100'
+            data-testid='Matches-NavButton'
           >
             Matches
           </NavLink>
@@ -32,6 +33,7 @@ const Navbar: React.FC = () => (
             to='/standings'
             className='block mt-4 lg:inline-block lg:mt-0 py-2 border-b-2 border-transparent w-auto inline-block text-gray-400 hover:text-red-100 mr-4'
             activeClassName='border-gray-400 text-indigo-100'
+            data-testid='Standings-NavButton'
           >
             Standings
           </NavLink>
@@ -39,6 +41,7 @@ const Navbar: React.FC = () => (
             to='/aboutus'
             className='block mt-4 lg:inline-block lg:mt-0 py-2 border-b-2 border-transparent w-auto inline-block text-gray-400 hover:text-white'
             activeClassName='border-gray-400 text-indigo-100'
+            data-testid='AboutUs-NavButton'
           >
             About us
           </NavLink>
@@ -47,6 +50,7 @@ const Navbar: React.FC = () => (
           <NavLink
             to='/login'
             className='inline-block text-sm px-4 py-2 leading-none border rounded-full text-white border-white hover:border-transparent hover:text-blue-400 hover:bg-white mt-4 lg:mt-0 mr-10 active:bg-blue-700'
+            data-testid='Login-NavButton'
           >
             Login
           </NavLink>
@@ -54,6 +58,7 @@ const Navbar: React.FC = () => (
       </div>
     </nav>
     <Switch>
+      <Route exact path='/' component={Matches} /> {/* Default Route */}
       <Route exact path='/matches' component={Matches} />
       <Route exact path='/standings' component={Standings} />
       <Route exact path='/aboutus' component={AboutUs} />
