@@ -1,32 +1,32 @@
 import {Redirect, Route} from "react-router-dom";
 import React from "react";
+import {IAuthenticationSystem} from "../AuthenticationSystem";
 
 interface PrivateRouteProps {
-    path : string,
-    auth : any,
-    children : React.ReactNode
+    path: string,
+    auth: IAuthenticationSystem,
+    children: React.ReactNode
 }
 
-export const PrivateRoute = ({path, auth, children} : PrivateRouteProps) => (
-        <Route
-            path={path}
-            render={({ location }) =>
-                auth.isAuthenticated ? (
-                    children
-                ) : <RedirectToLogin fromLocation={location}/>
-            }
-        />
-    );
+export const PrivateRoute = ({path, auth, children}: PrivateRouteProps) => (
+    <Route
+        path={path}
+        render={({location}) =>
+            auth.isAuthenticated
+                ? (children)
+                : <RedirectToLogin fromLocation={location}/>
+        }
+    />);
 
 interface RedirectToLoginProps {
-    fromLocation : any
+    fromLocation: any
 }
 
-const RedirectToLogin = ({fromLocation} : RedirectToLoginProps) => (
+const RedirectToLogin = ({fromLocation}: RedirectToLoginProps) => (
     <Redirect
         to={{
             pathname: "/login",
-            state: { from: fromLocation }
+            state: {from: fromLocation}
         }}
     />
 )
