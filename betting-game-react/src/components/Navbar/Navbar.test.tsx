@@ -5,8 +5,6 @@ import Navbar from './Navbar';
 
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import App from '../../App';
-
 
 describe('<Navbar />', () => {
   test('it should mount', () => {
@@ -32,11 +30,11 @@ describe('<Navbar />', () => {
   });
 
   test('full app rendering/navigating', () => {
-    const history = createMemoryHistory()
+    const history = createMemoryHistory();
     const { container, getByText } = render(
-        <Router history={history}>
-          <App />
-        </Router>
+      <Router history={history}>
+        <Navbar />
+      </Router>
     );
 
     // verify page content for expected default route
@@ -61,17 +59,6 @@ describe('<Navbar />', () => {
     const loginButton = screen.getByTestId('Login-NavButton');
     fireEvent.click(loginButton);
     expect(container.innerHTML).toMatch('Login Component');
-  })
-
-  test('landing on a bad page shows 404 page', () => {
-    const history = createMemoryHistory()
-    history.push('/aboutus')
-    const { getByRole } = render(
-        <Router history={history}>
-          <App />
-        </Router>
-    )
-    expect(getByRole('heading')).toHaveTextContent('404 Not Found')
-  })
+  });
 
 });

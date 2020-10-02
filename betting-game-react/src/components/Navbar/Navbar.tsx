@@ -9,6 +9,7 @@ import Login from '../Login/Login';
 import Matches from '../Matches/Matches';
 import Standings from '../Standings/Standings';
 import AboutUs from '../AboutUs/AboutUs';
+import { Redirect } from 'react-router-dom'
 
 const Navbar: React.FC = () => (
   <Router>
@@ -63,6 +64,7 @@ const Navbar: React.FC = () => (
       <Route exact path='/standings' component={Standings} />
       <Route exact path='/aboutus' component={AboutUs} />
       <Route exact path='/login' component={Login} />
+      <Redirect to ='matches'/>
     </Switch>
   </Router>
 );
