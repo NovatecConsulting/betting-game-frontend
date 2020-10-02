@@ -2,5 +2,23 @@
   "message": "hello i18n !!",
   "homepage": {
     "title": "THE BEST FOOTBALL BETTING APP"
+  },
+  "loginpage": {
+    "title": "Login",
+    "username": {
+      "placeholder": "Username"
+    },
+    "password": {
+      "placeholder": "Password"
+    },
+    "login": {
+      "button": "Login"
+    },
+    "logout": {
+      "button": "Logout"
+    },
+    "forgotpassword": {
+      "button": "Forgot password"
+    }
   }
 }

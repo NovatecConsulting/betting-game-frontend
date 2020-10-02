@@ -7,6 +7,7 @@
       >
         <option value="en">🏴󠁧󠁢󠁥󠁮󠁧󠁿English</option>
         <option value="de">🇩🇪Deutsch</option>
+        <option value="es">🇪🇸Español</option>
       </select>
     </div>
   </div>
