@@ -1,16 +1,23 @@
 export interface IAuthenticationSystem {
     isAuthenticated: boolean;
-
-    authenticate(callback: () => void): any;
+    userName : string
+    authenticate(userName: string,
+                 password: string,
+                 callback: () => void): any;
 
     signout(callback: () => void): any;
 }
 
 export class FakeAuthenticationSystem implements IAuthenticationSystem {
     isAuthenticated: boolean = false;
+    userName : string = "";
 
-    authenticate(callback: () => void) {
+    authenticate(
+        userName:string,
+        password:string,
+        callback: () => void) {
         this.isAuthenticated = true;
+        this.userName = userName;
         setTimeout(callback, 100);
     }
 

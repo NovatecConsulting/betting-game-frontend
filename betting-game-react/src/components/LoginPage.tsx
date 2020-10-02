@@ -1,27 +1,43 @@
-import React from "react";
-import {History, Location} from "history"
+import React, {FormEvent, useState} from "react";
+import {History} from "history"
 import {IAuthenticationSystem} from "../AuthenticationSystem";
 
 interface LoginPageProps {
     history: History,
-    location: Location,
+    location: any,
     auth: IAuthenticationSystem
 }
 
-interface IHasStateWithPathName {
-    state: { from: {pathname: string }}
-}
-
 export const LoginPage = ({history, location, auth}: LoginPageProps) => {
-    let fromPathName = (location as IHasStateWithPathName).state.from.pathname || "/";
-    let login = () => {
-        auth.authenticate(() => history.replace(fromPathName));
+    const fromPathName = location.state === undefined ? "/" : location.state.from.pathname;
+    console.log(fromPathName);
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
+
+    let login = (e : FormEvent) => {
+        e.preventDefault();
+        auth.authenticate(
+            userName,
+            password,
+            () => history.replace(fromPathName));
     };
 
     return (
         <div>
             <p>You must log in to view the page at {fromPathName}</p>
-            <button onClick={login}>Log in</button>
+            <form onSubmit={e => login(e)}>
+                <label>
+                    Name:
+                    <input type="text" name="name" required
+                           value={userName} onChange={e => setUserName(e.target.value)}/>
+                </label>
+                <label>
+                    Password:
+                    <input type="password" name="password" required
+                           value={password} onChange={e => setPassword(e.target.value)}/>
+                </label>
+                <input type="submit" value="Submit"/>
+            </form>
         </div>
     );
 }

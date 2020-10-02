@@ -14,7 +14,7 @@ export const AuthButton = ({history, auth}: AuthButtonProps) => {
 
     return auth.isAuthenticated
         ? (<p>
-            Welcome!{" "}
+            Welcome {auth.userName}!
             <button onClick={signout}>
                 Sign out
             </button>
