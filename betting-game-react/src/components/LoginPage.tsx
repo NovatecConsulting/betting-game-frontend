@@ -14,7 +14,7 @@ export const LoginPage = ({history, location, auth}: LoginPageProps) => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    let login = (e : FormEvent) => {
+    let login = (e: FormEvent) => {
         e.preventDefault();
         auth.authenticate(
             userName,

@@ -41,7 +41,7 @@ function Routing() {
                 <Route path="/login">
                     <LoginPage history={history} location={location} auth={auth}/>
                 </Route>
-                <PrivateRoute path="/protected" auth={auth}>
+                <PrivateRoute path="/protected" isAuthenticated={auth.isAuthenticated}>
                     <ProtectedPage/>
                 </PrivateRoute>
             </Switch>
