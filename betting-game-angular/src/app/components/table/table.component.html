@@ -1,0 +1,22 @@
+<table>
+    <tr>
+        <th></th>
+        <th>Sp</th>
+        <th>Pkt</th>
+        <th>Tore</th>
+        <th>Diff</th>
+        <th>g</th>
+        <th>u</th>
+        <th>v</th>
+    </tr>
+    <tr *ngFor="let team of Teams">
+        <td>{{team.stats.rank}}. {{team.name}}</td>
+        <td>{{team.stats.gamesPlayed}}</td>    
+        <td>{{team.stats.score}}</td>
+        <td>{{team.stats.goals}}:{{team.stats.goalsAgainst}}</td>
+        <td>{{team.stats.goalDifference}}</td>
+        <td>{{team.stats.wins}}</td>
+        <td>{{team.stats.loose}}</td>
+        <td>{{team.stats.draw}}</td>
+    </tr>
+</table>
