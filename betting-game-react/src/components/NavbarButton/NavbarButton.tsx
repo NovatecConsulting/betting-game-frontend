@@ -9,7 +9,7 @@ const NavbarButton: React.FC<NavbarButtonProps> = ({
 }: NavbarButtonProps) => (
   <NavLink
     to={buttonURL}
-    className='block mr-4 lg:inline-block lg:mt-0 py-2 border-b-2 border-transparent inline-block text-gray-400 hover:text-white'
+    className='mr-4 lg:inline-block lg:mt-0 py-2 border-b-2 border-transparent inline-block text-gray-400 hover:text-white'
     activeClassName='border-gray-400 text-indigo-100'
     data-testid={`${buttonTestIdPrefix}-NavButton`}
   >
