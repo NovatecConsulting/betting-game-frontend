@@ -12,22 +12,32 @@
 
       <LanguageSwitcher class="ml-4" />
       <ThemeSwitcher class="ml-4" />
+      <UserNavItem v-if="user.isLoggedIn" :user="user" @logout="$emit('logout')" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import routes from '../router/index'
+import { routes } from '../router/index'
+import { vxm } from '../store/store.vuex'
 import Logo from '../components/Logo.vue'
 import LanguageSwitcher from '../components/LanguageSwitcher.vue'
 import ThemeSwitcher from '../components/ThemeSwitcher.vue'
+import UserNavItem from '../components/UserNavItem.vue'
 
 @Component({
-  components: { Logo, LanguageSwitcher, ThemeSwitcher }
+  components: { Logo, LanguageSwitcher, ThemeSwitcher, UserNavItem }
 })
 export default class Homepage extends Vue {
-  links = routes.options.routes
+  user = vxm.user
+
+  get links() {
+    if (this.user.isLoggedIn) {
+      return routes.filter(route => !route.meta?.anonymousContext)
+    }
+    return routes
+  }
 }
 </script>
 

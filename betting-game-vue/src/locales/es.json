@@ -1,0 +1,24 @@
+{
+    "homepage": {
+      "title": "LA MEJOR APP DE APUESTAS DEPORTIVAS"
+    },
+    "loginpage": {
+      "title": "Inicio de sesión",
+      "username": {
+        "placeholder": "Nombre de usuario"
+      },
+      "password": {
+        "placeholder": "Contraseña"
+      },
+      "login": {
+        "button": "Login"
+      },
+      "logout": {
+        "button": "Logout"
+      },
+      "forgotpassword": {
+        "button": "¿Olvidaste tu contraseña?"
+      }
+    }
+  }
+  

@@ -1,12 +1,13 @@
 <template>
   <div id="app" class="light">
-    <Navbar />
+    <Navbar @logout="logout" />
     <router-view />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { vxm } from './store/store.vuex'
 import Navbar from './components/Navbar.vue'
 
 @Component({
@@ -14,7 +15,14 @@ import Navbar from './components/Navbar.vue'
     Navbar
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  user = vxm.user
+
+  async logout() {
+    await this.user.logout()
+    this.$router.push('login')
+  }
+}
 </script>
 
 <style style="scss">
