@@ -8,5 +8,4 @@ const AboutUs: React.FC = () => (
     About us Component
   </div>
 );
-
 export default AboutUs;

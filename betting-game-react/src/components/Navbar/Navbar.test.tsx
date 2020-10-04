@@ -31,7 +31,7 @@ describe('<Navbar />', () => {
 
   test('full app rendering/navigating', () => {
     const history = createMemoryHistory();
-    const { container, getByText } = render(
+    const { container } = render(
       <Router history={history}>
         <Navbar />
       </Router>
@@ -60,5 +60,4 @@ describe('<Navbar />', () => {
     fireEvent.click(loginButton);
     expect(container.innerHTML).toMatch('Login Component');
   });
-
 });
