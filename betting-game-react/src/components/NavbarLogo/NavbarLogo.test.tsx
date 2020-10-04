@@ -1,14 +1,19 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+
+import React from 'react';
+
+import { render } from '@testing-library/react';
+
 import NavbarLogo from './NavbarLogo';
 
 describe('<NavbarLogo />', () => {
-  test('it should mount', () => {
-    render(<NavbarLogo />);
-    
-    const navbarLogo = screen.getByTestId('NavbarLogo');
+  test('it should render a non-empty container with the logo', () => {
+    const { getByTestId } = render(<NavbarLogo />);
+    const navbarLogoContainer = getByTestId('NavbarLogoContainer');
+    const navbarLogo = getByTestId('NavbarLogoContainer');
 
+    expect(navbarLogoContainer).toBeInTheDocument();
     expect(navbarLogo).toBeInTheDocument();
+    expect(navbarLogo).not.toBeEmptyDOMElement();
   });
 });

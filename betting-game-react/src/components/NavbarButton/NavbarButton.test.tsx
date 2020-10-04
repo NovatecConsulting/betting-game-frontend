@@ -1,14 +1,38 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import { render } from '@testing-library/react';
+import { NavbarButtonProps } from '../Navbar/NavbarButtonProps';
 import NavbarButton from './NavbarButton';
 
 describe('<NavbarButton />', () => {
-  test('it should mount', () => {
-    render(<NavbarButton buttonText='' buttonURL='' buttonTestID='' />);
+  const navbarButtonMock: NavbarButtonProps = {
+    buttonURL: '/testButtonURL',
+    buttonText: 'TestButtonText',
+    buttonTestIdPrefix: 'TestButton',
+  };
 
-    const navbarButton = screen.getByTestId('NavbarButton');
+  test('it should render a non-empty navbar button with text', () => {
+    const { getByTestId } = render(
+      <Router>
+        <NavbarButton
+          buttonText={navbarButtonMock.buttonText}
+          buttonURL={navbarButtonMock.buttonURL}
+          buttonTestIdPrefix={navbarButtonMock.buttonTestIdPrefix}
+        />
+      </Router>
+    );
+
+    const navbarButton = getByTestId(
+      `${navbarButtonMock.buttonTestIdPrefix}-NavButton`
+    );
+    const navbarButtonText = getByTestId(
+      `${navbarButtonMock.buttonTestIdPrefix}-NavButtonText`
+    );
 
     expect(navbarButton).toBeInTheDocument();
+    expect(navbarButtonText).not.toBeEmpty();
   });
 });

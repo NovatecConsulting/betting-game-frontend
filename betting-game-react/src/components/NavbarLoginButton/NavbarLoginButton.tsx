@@ -10,7 +10,7 @@ const NavbarLoginButton: React.FC = () => (
       className='inline-block text-sm px-5 py-2 lg:mt-0 mr-10 leading-none border rounded-full text-white border-white hover:text-blue-400 hover:bg-white active:bg-blue-700'
       data-testid='Login-NavButton'
     >
-      Login
+      <span data-testid='Login-NavButtonText'>Login</span>
     </NavLink>
   </div>
 );

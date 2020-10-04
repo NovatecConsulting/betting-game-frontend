@@ -1,24 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-export interface NavbarButtonProps {
-  buttonText: string;
-  buttonURL: string;
-  buttonTestID: string;
-}
+import { NavbarButtonProps } from '../Navbar/NavbarButtonProps';
 
 const NavbarButton: React.FC<NavbarButtonProps> = ({
   buttonText,
   buttonURL,
-  buttonTestID,
+  buttonTestIdPrefix,
 }: NavbarButtonProps) => (
   <NavLink
     to={buttonURL}
     className='block mr-4 lg:inline-block lg:mt-0 py-2 border-b-2 border-transparent inline-block text-gray-400 hover:text-white'
     activeClassName='border-gray-400 text-indigo-100'
-    data-testid={buttonTestID}
+    data-testid={`${buttonTestIdPrefix}-NavButton`}
   >
-    {buttonText}
+    <span data-testid={`${buttonTestIdPrefix}-NavButtonText`}>
+      {buttonText}
+    </span>
   </NavLink>
 );
 
