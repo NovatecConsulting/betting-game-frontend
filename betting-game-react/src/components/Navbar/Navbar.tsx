@@ -15,7 +15,7 @@ import { NavbarButtonProps, navbarButtons } from './NavbarButtonProps';
 
 const Navbar: React.FC = () => {
   return (
-    <Router>
+    <span>
       <nav
         className='flex items-center justify-between flex-wrap border-b-2 border-blue-300 bg-blue-900 p-2'
         data-testid='Navbar'
@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
         ))}
         <Redirect to={MATCHES.path} />
       </Switch>
-    </Router>
+    </span>
   );
 };
 
