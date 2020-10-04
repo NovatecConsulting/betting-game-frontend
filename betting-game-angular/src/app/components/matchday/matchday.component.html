@@ -3,8 +3,9 @@
     <div class="px-6 py-4 self-center">
       Matchday No 1
     </div>
+
     <ul>
-      <li *ngFor="let match of matchday?.matches; let index" class="items-center" [ngClass]="{'bg-gray-300': index%2===0 }">
+      <li *ngFor="let match of (matchday$ | async)?.matches; let index" class="items-center" [ngClass]="{'bg-gray-300': index%2===0 }">
         <div class="flex flex-row rounded overflow-hidden shadow-lg rounded h-10 py-3 match">
           <div class="px-2 flex-1 text-right">{{match.home}}</div>
           <div class="px-2 w-1/12" *ngIf="matchday?.done">{{match.goalsHome + ':' + match.goalsGuest}}</div>
