@@ -15,10 +15,10 @@ When there are different libraries serving the same purpose in a framework, each
   | -----------|:-------:|:-------:|:-----:|
   | **linting** | | eslint | |
   | **formatter** | | prettier| |
-  | **UI library** | |tailwindcss| |
+  | **UI library** | |Material Components| |
+  | **CSS library** | |tailwindcss| |
   | **store** | @ngxs/@ngrx | react-hooks |vuex|
   | **i18n** | @angular/localize vs ngx-translate vs i18next | i18next |vue-i18n|
-  | **themes** | | ||
 
 - Difficulties in implementing various requirements
 - Performance

@@ -2,5 +2,23 @@
   "message": "Hallo i18n !!",
   "homepage": {
     "title": "DIE BESTE FUßBALL TIPPAPP"
+  },
+  "loginpage": {
+    "title": "Anmelden",
+    "username": {
+      "placeholder": "Benutzernamen"
+    },
+    "password": {
+      "placeholder": "Passwort"
+    },
+    "login": {
+      "button": "Anmelden"
+    },
+    "logout": {
+      "button": "Abmelden"
+    },
+    "forgotpassword": {
+      "button": "Passwort vergessen?"
+    }
   }
 }
