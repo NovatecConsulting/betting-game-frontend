@@ -9,7 +9,10 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ['html', 'text'],
   coverageDirectory: 'coverage/betting-game-frontend',
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, {
-    prefix: '<rootDir>/'
-  })
+  moduleNameMapper: pathsToModuleNameMapper(
+    {},
+    {
+      prefix: '<rootDir>/'
+    }
+  )
 };

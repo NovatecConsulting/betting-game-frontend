@@ -1,13 +1,13 @@
-import { Moment } from 'moment';
+import { DateTime } from 'luxon';
 
 export class Matchday {
   matches: Match[];
-  startDateTime: Moment;
+  startDateTime: DateTime;
   done: boolean;
 }
 
 export class Match {
-  startDateTIme: Moment;
+  startDateTIme: DateTime;
   home: string;
   guest: string;
   goalsHome: number;
