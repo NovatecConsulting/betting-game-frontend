@@ -13,10 +13,10 @@ When there are different libraries serving the same purpose in a framework, each
 - Initilizing project with core dependencies:
   | Dependency | Angular | Reactjs | Vuejs |
   | -----------|:-------:|:-------:|:-----:|
-  | **linting** | eslint | eslint | |
-  | **formatter** | prettier | prettier| |
+  | **linting** | eslint | eslint | eslint |
+  | **formatter** | prettier | prettier| prettier |
   | **UI library** | |Material Components| |
-| **CSS library** | tailwindcss | tailwindcss| |
+  | **CSS library** | tailwindcss | tailwindcss| |
   | **store** | @ngxs | react-hooks |vuex|
   | **i18n** | @angular/localize vs ngx-translate vs i18next | i18next |vue-i18n|
   | **themes** | | ||
