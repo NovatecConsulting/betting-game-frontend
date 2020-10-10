@@ -1,4 +1,4 @@
-export enum Teams {
+export enum TeamName {
   VFB_STUTTGART = 'VfB Stuttgart',
   EINTRACHT_FRANKFURT = 'Eintracht Frankfurt',
   ARMINIA_BIELEFELD = 'Arminia Bielefeld',

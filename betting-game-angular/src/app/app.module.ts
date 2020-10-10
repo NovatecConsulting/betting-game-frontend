@@ -10,16 +10,21 @@ import { AppState } from './state/app-state';
 import { NgxsModule } from '@ngxs/store';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './components/table/table.component';
+import { MatchdayState } from './state/matchday-state';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 @NgModule({
   declarations: [AppComponent, HomepageComponent, MatchdayComponent, NavigationComponent, TableComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     CommonModule,
-    NgxsModule.forRoot([AppState], {
+    NgxsModule.forRoot([AppState, MatchdayState], {
       developmentMode: true
-    })
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

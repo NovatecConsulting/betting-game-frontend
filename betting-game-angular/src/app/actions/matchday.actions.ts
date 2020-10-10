@@ -7,4 +7,8 @@ export namespace MatchdayAction {
       console.log(matchday);
     }
   }
+
+  export class GetCurrent {
+    static readonly type = '[Matchday] Get Current';
+  }
 }
