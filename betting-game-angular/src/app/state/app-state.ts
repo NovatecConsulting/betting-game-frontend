@@ -2,6 +2,7 @@ import { Match, Matchday } from '../model/matchday';
 import { State } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 import { DateTime } from 'luxon';
+import { Teams } from '../model/teams.enum';
 
 @State<Matchday>({
   name: 'app',
@@ -11,64 +12,64 @@ import { DateTime } from 'luxon';
     matches: [
       {
         startDateTIme: DateTime.fromISO('2020-09-18T20:30:00'),
-        home: 'FC Bayern München',
-        guest: 'FC Schalke 04',
+        home: Teams.FC_BAYERN_MUENCHEN,
+        guest: Teams.FC_SCHALKE_04,
         goalsHome: 8,
         goalsGuest: 0
       } as Match,
       {
         startDateTIme: DateTime.fromISO('2020-09-19T15:30:00'),
-        home: 'Eintracht Frankfurt',
-        guest: 'Arminia Bielefeld',
+        home: Teams.EINTRACHT_FRANKFURT,
+        guest: Teams.ARMINIA_BIELEFELD,
         goalsHome: 1,
         goalsGuest: 1
       } as Match,
       {
         startDateTIme: DateTime.fromISO('2020-09-18T15:30:00'),
-        home: '1. FC Union Berlin',
-        guest: 'FC Augsburg',
+        home: Teams.FC_UNION_BERLIN,
+        guest: Teams.FC_AUGSBURG,
         goalsHome: 1,
         goalsGuest: 3
       } as Match,
       {
         startDateTIme: DateTime.fromISO('2020-09-18T15:30:00'),
-        home: '1. FC Köln',
-        guest: 'TSG Hoffenheim',
+        home: Teams.FC_KOELN,
+        guest: Teams.TSG_HOFFENHEIM,
         goalsHome: 2,
         goalsGuest: 3
       } as Match,
       {
         startDateTIme: DateTime.fromISO('2020-09-18T15:30:00'),
-        home: 'Werder Bremen',
-        guest: 'Hertha BSC',
+        home: Teams.WERDER_BREMEN,
+        guest: Teams.HERTHA_BSC,
         goalsHome: 1,
         goalsGuest: 4
       } as Match,
       {
         startDateTIme: DateTime.fromISO('2020-09-18T15:30:00'),
-        home: 'VfB Stuttgart',
-        guest: 'SC Freiburg',
+        home: Teams.VFB_STUTTGART,
+        guest: Teams.SC_FREIBURG,
         goalsHome: 2,
         goalsGuest: 3
       } as Match,
       {
         startDateTIme: DateTime.fromISO('2020-09-18T18:30:00'),
-        home: 'Borussia Dortmund',
-        guest: 'Borussia Mönchengladbach',
+        home: Teams.BORUSSIA_DORTMUND,
+        guest: Teams.BORUSSIA_MOENCHENGLADBACH,
         goalsHome: 3,
         goalsGuest: 0
       } as Match,
       {
         startDateTIme: DateTime.fromISO('2020-09-19T15:30:00'),
-        home: 'RB Leipzig',
-        guest: '1. FSV Mainz 05',
+        home: Teams.RB_LEIPZIG,
+        guest: Teams.FSV_MAINZ_05,
         goalsHome: 3,
         goalsGuest: 1
       } as Match,
       {
         startDateTIme: DateTime.fromISO('2020-09-19 18:00:00'),
-        home: 'VfL Wolfsburg',
-        guest: 'Bayer 04 Leverkusen',
+        home: Teams.VFL_WOLFSBURG,
+        guest: Teams.BAYER_04_LEVERKUSEN,
         goalsHome: 1,
         goalsGuest: 3
       } as Match
