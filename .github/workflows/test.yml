@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -13,11 +12,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-      - name: Install Angular dependencies
-      - run: yarn install
-      - name: Test Angular
-      - run: yarn test
+          node-version: 12
+
+      # pipeline currently only runs on Angular project
+      - name: Install dependencies
+        working-directory: ./betting-game-angular
+        run: yarn install
+
+      - name: Lint source files
+        working-directory: ./betting-game-angular
+        run: yarn lint
+
+      - name: Run all tests
+        working-directory: ./betting-game-angular
+        run: yarn test

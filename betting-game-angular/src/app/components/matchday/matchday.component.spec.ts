@@ -6,7 +6,7 @@ import { Match, Matchday } from '../../model/matchday';
 import { of } from 'rxjs';
 import { DateTime } from 'luxon';
 import { AppState } from '../../state/app-state';
-import {Teams} from "../../model/teams.enum";
+import { Teams } from '../../model/teams.enum';
 
 describe('MatchdayComponent', () => {
   let component: MatchdayComponent;
