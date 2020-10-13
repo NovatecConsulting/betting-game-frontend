@@ -1,6 +1,6 @@
 # betting-game-frontend
 
-Link to Backend repo: https://github.com/mbagemihl/betting-game-backend
+Link to Backend repo: https://github.com/NovatecConsulting/betting-game-backend
 
 # Goals
 
@@ -13,12 +13,13 @@ When there are different libraries serving the same purpose in a framework, each
 - Initilizing project with core dependencies:
   | Dependency | Angular | Reactjs | Vuejs |
   | -----------|:-------:|:-------:|:-----:|
-  | **linting** | | eslint | |
-  | **formatter** | | prettier| |
+  | **linting** | eslint | eslint | |
+  | **formatter** | prettier | prettier| |
   | **UI library** | |Material Components| |
-  | **CSS library** | |tailwindcss| |
-  | **store** | @ngxs/@ngrx | react-hooks |vuex|
+| **CSS library** | tailwindcss | tailwindcss| |
+  | **store** | @ngxs | react-hooks |vuex|
   | **i18n** | @angular/localize vs ngx-translate vs i18next | i18next |vue-i18n|
+  | **themes** | | ||
 
 - Difficulties in implementing various requirements
 - Performance

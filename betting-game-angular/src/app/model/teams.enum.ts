@@ -1,0 +1,20 @@
+export enum Teams {
+  VFB_STUTTGART = 'VfB Stuttgart',
+  EINTRACHT_FRANKFURT = 'Eintracht Frankfurt',
+  ARMINIA_BIELEFELD = 'Arminia Bielefeld',
+  FC_BAYERN_MUENCHEN = 'FC Bayern München',
+  FC_SCHALKE_04 = 'FC Schalke 04',
+  SC_FREIBURG = 'SC Freiburg',
+  HERTHA_BSC = 'Hertha BSC',
+  WERDER_BREMEN = 'Werder Bremen',
+  TSG_HOFFENHEIM = 'TSG Hoffenheim',
+  FC_AUGSBURG = 'FC Augsburg',
+  FC_UNION_BERLIN = '1. FC Union Berlin',
+  FC_KOELN = '1. FC Köln',
+  BORUSSIA_DORTMUND = 'Borussia Dortmund',
+  BORUSSIA_MOENCHENGLADBACH = 'Borussia Mönchengladbach',
+  RB_LEIPZIG = 'RB Leipzig',
+  FSV_MAINZ_05 = '1. FSV Mainz 05',
+  VFL_WOLFSBURG = 'VfL Wolfsburg',
+  BAYER_04_LEVERKUSEN = 'Bayer 04 Leverkusen'
+}

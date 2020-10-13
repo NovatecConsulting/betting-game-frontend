@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      # pipeline currently only runs on Angular project
+      - name: Install dependencies
+        working-directory: ./betting-game-angular
+        run: yarn install
+
+      - name: Lint source files
+        working-directory: ./betting-game-angular
+        run: yarn lint
+
+      - name: Run all tests
+        working-directory: ./betting-game-angular
+        run: yarn test
