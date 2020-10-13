@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Matchday } from '../../model/matchday';
 
@@ -9,6 +9,5 @@ import { Matchday } from '../../model/matchday';
   styleUrls: ['./matchday.component.scss']
 })
 export class MatchdayComponent {
-  constructor(private store: Store) {}
   @Select((state) => state.app) matchday$: Observable<Matchday>;
 }

@@ -4,7 +4,7 @@
       Matchday No 1
     </div>
 
-    <ul>
+    <ul class="my-class">
       <li *ngFor="let match of (matchday$ | async)?.matches; let index" class="items-center" [ngClass]="{'bg-gray-300': index%2===0 }">
         <div class="flex flex-row rounded overflow-hidden shadow-lg rounded h-10 py-3 match">
           <div class="px-2 flex-1 text-right">{{match.home}}</div>

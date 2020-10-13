@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MatchdayComponent } from './matchday.component';
 import { NgxsModule, Store } from '@ngxs/store';
@@ -7,11 +7,11 @@ import { of } from 'rxjs';
 import { DateTime } from 'luxon';
 import { AppState } from '../../state/app-state';
 import { Teams } from '../../model/teams.enum';
+import { By } from '@angular/platform-browser';
 
 describe('MatchdayComponent', () => {
   let component: MatchdayComponent;
   let fixture: ComponentFixture<MatchdayComponent>;
-  let store: Store;
   const mockState: AppState = {
     matchDay: {
       startDateTime: DateTime.fromISO('2020-09-18T20:30:00'),
@@ -84,24 +84,19 @@ describe('MatchdayComponent', () => {
     } as Matchday
   } as AppState;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [MatchdayComponent],
-      imports: [NgxsModule.forRoot([AppState])]
-    }).compileComponents();
-
-    store = TestBed.inject(Store);
-    store.reset({
-      ...store.snapshot(),
-      state: mockState
-    });
-    spyOn(store, 'select').and.returnValue(of(mockState));
-    spyOn(store, 'selectSnapshot').and.returnValue(mockState);
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [MatchdayComponent]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MatchdayComponent);
     component = fixture.componentInstance;
+    Object.defineProperty(component, 'matchday$', { writable: true });
+    component.matchday$ = of(mockState.matchDay);
     fixture.detectChanges();
   });
 
@@ -109,10 +104,8 @@ describe('MatchdayComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // ToDo (MBA): test if matches are displayed
-  // it('should contain list of matches', () => {
-  //   fixture.detectChanges();
-  //   let ul = fixture.nativeElement.querySelector('ul');
-  //   expect(ul.childCount).toEqual(9);
-  // });
+  it('should contain list of matches', () => {
+    const ul = fixture.debugElement.query(By.css('ul'));
+    expect(ul.children.length).toEqual(9);
+  });
 });
