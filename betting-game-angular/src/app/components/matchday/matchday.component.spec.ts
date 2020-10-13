@@ -4,20 +4,22 @@ import { MatchdayComponent } from './matchday.component';
 import { of } from 'rxjs';
 import { MatchdayStateModel } from '../../state/matchday-state';
 import { By } from '@angular/platform-browser';
-import { defaultMatchday } from '../../mock-data/default.matchday';
+import { MATCHDAY } from '../../mock-data/mock-matchday';
+import { NgxsModule } from '@ngxs/store';
 
 describe('MatchdayComponent', () => {
   let component: MatchdayComponent;
   let fixture: ComponentFixture<MatchdayComponent>;
   const mockState: MatchdayStateModel = {
-    matchday: defaultMatchday,
+    matchday: MATCHDAY,
     isLoading: false
   };
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [MatchdayComponent]
+        declarations: [MatchdayComponent],
+        imports: [NgxsModule.forRoot([])]
       }).compileComponents();
     })
   );
@@ -36,6 +38,6 @@ describe('MatchdayComponent', () => {
 
   it('should contain list of matches', () => {
     const ul = fixture.debugElement.query(By.css('ul'));
-    expect(ul.children.length).toEqual(9);
+    expect(ul.children.length).toEqual(3);
   });
 });
