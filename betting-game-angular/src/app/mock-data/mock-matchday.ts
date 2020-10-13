@@ -2,7 +2,7 @@ import { Matchday } from '../model/matchday';
 import { DateTime } from 'luxon';
 import { TeamName } from '../model/teams.enum';
 
-export const defaultMatchday: Matchday = {
+export const MATCHDAY: Matchday = {
   id: 3,
   name: '3. Spieltag',
   firstMatchStartDateTime: DateTime.fromISO('2020-09-18T20:30:00'),

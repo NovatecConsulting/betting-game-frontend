@@ -1,10 +1,10 @@
-import { teamStatistics } from './teamStatistic';
+import { TeamStatistics } from './team-statistics';
 
 export class Team {
   name: string;
-  stats: teamStatistics;
+  stats: TeamStatistics;
 
-  constructor(name: string, stats: teamStatistics) {
+  constructor(name: string, stats: TeamStatistics) {
     this.name = name;
     this.stats = stats;
   }
