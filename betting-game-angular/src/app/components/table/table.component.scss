@@ -1,0 +1,20 @@
+table {
+  margin: 1em;
+}
+
+table, th, td {
+    border-bottom: 1px solid #D3D3D3;
+    border-collapse: collapse;
+    font-weight: normal;
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;
+  }
+
+  tr{
+    background: white
+  }
+  tr:nth-child(even){
+    background: #D3D3D3
+  }

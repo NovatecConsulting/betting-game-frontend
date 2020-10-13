@@ -9,9 +9,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { AppState } from './state/app-state';
 import { NgxsModule } from '@ngxs/store';
 import { CommonModule } from '@angular/common';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, MatchdayComponent, NavigationComponent],
+  declarations: [AppComponent, HomepageComponent, MatchdayComponent, NavigationComponent, TableComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
