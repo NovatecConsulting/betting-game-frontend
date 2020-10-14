@@ -63,7 +63,8 @@
           "builder": "ngx-build-plus:dev-server",
           "options": {
             "extraWebpackConfig": "webpack.config.js",
-            "browserTarget": "betting-game-angular:build"
+            "browserTarget": "betting-game-angular:build",
+            "port": 3000
           },
           "configurations": {
             "production": {
