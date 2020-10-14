@@ -1,4 +1,4 @@
-export class teamStatistics {
+export class TeamStatistics {
   rank: number;
   gamesPlayed: number;
   score: number;
