@@ -1,6 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { NavbarButtonProps } from '../Navbar/NavbarButtonProps';
+
+export interface NavbarButtonProps {
+  buttonText: string;
+  buttonURL: string;
+  buttonTestIdPrefix: string;
+}
 
 const NavbarButton: React.FC<NavbarButtonProps> = ({
   buttonText,

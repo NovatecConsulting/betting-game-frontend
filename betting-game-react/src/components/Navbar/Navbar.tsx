@@ -1,11 +1,28 @@
 import React from 'react';
 import { Redirect, Route, RouteProps, Switch } from 'react-router-dom';
 
-import routes, { MATCHES } from '../../config/routes';
-import NavbarButton from '../NavbarButton/NavbarButton';
+import routes, { ABOUTUS, MATCHES, STANDINGS } from '../../config/routes';
+import NavbarButton, { NavbarButtonProps } from '../NavbarButton/NavbarButton';
 import NavbarLoginButton from '../NavbarLoginButton/NavbarLoginButton';
 import NavbarLogo from '../NavbarLogo/NavbarLogo';
-import { NavbarButtonProps, navbarButtons } from './NavbarButtonProps';
+
+export const navbarButtons: NavbarButtonProps[] = [
+  {
+    buttonURL: MATCHES.path,
+    buttonText: 'Matches',
+    buttonTestIdPrefix: 'Matches',
+  },
+  {
+    buttonURL: STANDINGS.path,
+    buttonText: 'Standings',
+    buttonTestIdPrefix: 'Standings',
+  },
+  {
+    buttonURL: ABOUTUS.path,
+    buttonText: 'About us',
+    buttonTestIdPrefix: 'AboutUs',
+  },
+];
 
 const Navbar: React.FC = () => {
   return (
@@ -18,16 +35,14 @@ const Navbar: React.FC = () => {
         <div className='block flex-grow lg:flex lg:items-center lg:w-auto'>
           <div className='text-sm lg:flex-grow inline'>
             {navbarButtons.map(
-              (navbarButton: NavbarButtonProps, index: number) => {
-                return (
-                  <NavbarButton
-                    key={index}
-                    buttonText={navbarButton.buttonText}
-                    buttonURL={navbarButton.buttonURL}
-                    buttonTestIdPrefix={navbarButton.buttonTestIdPrefix}
-                  ></NavbarButton>
-                );
-              }
+              (navbarButton: NavbarButtonProps, index: number) => (
+                <NavbarButton
+                  key={index}
+                  buttonText={navbarButton.buttonText}
+                  buttonURL={navbarButton.buttonURL}
+                  buttonTestIdPrefix={navbarButton.buttonTestIdPrefix}
+                ></NavbarButton>
+              )
             )}
           </div>
         </div>

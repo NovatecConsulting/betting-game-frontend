@@ -4,10 +4,9 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
-import { NavbarButtonProps } from '../Navbar/NavbarButtonProps';
-import NavbarButton from './NavbarButton';
+import NavbarButton, { NavbarButtonProps } from './NavbarButton';
 
-describe('<NavbarButton />', () => {
+describe('Navigation bar button for users', () => {
   const navbarButtonMock: NavbarButtonProps = {
     buttonURL: '/testButtonURL',
     buttonText: 'TestButtonText',

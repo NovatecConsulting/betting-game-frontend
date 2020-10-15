@@ -7,7 +7,7 @@ import { render } from '@testing-library/react';
 
 import NavbarLoginButton from './NavbarLoginButton';
 
-describe('<NavbarLoginButton />', () => {
+describe('Login button for the navigation bar', () => {
   test('it should render a non-empty button with text', () => {
     const { getByTestId } = render(
       <Router>
