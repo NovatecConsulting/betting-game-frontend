@@ -13,6 +13,7 @@ import { TableComponent } from './components/table/table.component';
 import { MatchdayState } from './state/matchday-state';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [AppComponent, HomepageComponent, MatchdayComponent, NavigationComponent, TableComponent],
@@ -24,7 +25,11 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
     NgxsModule.forRoot([AppState, MatchdayState], {
       developmentMode: true
     }),
-    NgxsReduxDevtoolsPluginModule.forRoot()
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    AuthModule.forRoot({
+      domain: 'YOUR_DOMAIN',
+      clientId: 'YOUR_CLIENT_ID'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
