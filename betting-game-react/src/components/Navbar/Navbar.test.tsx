@@ -12,8 +12,6 @@ import { NavbarButtonProps } from '../NavbarButton/NavbarButton';
 
 describe('Navigation bar for users', () => {
   test('it should render a navbar with a logo, a login button and all navigation buttons', () => {
-    const history = createMemoryHistory();
-    history.push('/bad/route');
     const { getByTestId } = render(
       <MemoryRouter>
         <Navbar />
