@@ -7,31 +7,67 @@ import { MemoryRouter, Router } from 'react-router-dom';
 import { fireEvent, render } from '@testing-library/react';
 
 import { ABOUTUS, LOGIN, MATCHES, STANDINGS } from '../../config/routes';
-import Navbar, { navbarButtons } from './Navbar';
-import { NavbarButtonProps } from '../NavbarButton/NavbarButton';
+import Navbar from './Navbar';
 
 describe('Navigation bar for users', () => {
-  test('it should render a navbar with a logo, a login button and all navigation buttons', () => {
+  test('It should render the logo in the navbar', () => {
     const { getByTestId } = render(
       <MemoryRouter>
         <Navbar />
       </MemoryRouter>
     );
 
-    const navbar = getByTestId('Navbar');
     const navbarLogo = getByTestId('NavbarLogo');
-    let navbarButtonsArray: any[] = [];
-    navbarButtons.map((navbarButton: NavbarButtonProps, index: number) => {
-      navbarButtonsArray.push(
-        getByTestId(`${navbarButton.buttonTestIdPrefix}-NavButton`)
-      );
-    });
 
-    expect(navbar).toBeInTheDocument();
     expect(navbarLogo).toBeInTheDocument();
-    navbarButtonsArray.forEach((navbarButton) => {
-      expect(navbarButton).toBeInTheDocument();
-    });
+  });
+
+  test('It should render the login button in the navbar', () => {
+    const { getByTestId } = render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
+    );
+
+    const loginButton = getByTestId('Login-NavButton');
+
+    expect(loginButton).toBeInTheDocument();
+  });
+
+  test('it should render matches button', () => {
+    const { getByTestId } = render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
+    );
+
+    const matchesButton = getByTestId('Matches-NavButton');
+
+    expect(matchesButton).toBeInTheDocument();
+  });
+
+  test('it should render standings button', () => {
+    const { getByTestId } = render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
+    );
+
+    const standingsButton = getByTestId('Standings-NavButton');
+
+    expect(standingsButton).toBeInTheDocument();
+  });
+
+  test('it should render about us button', () => {
+    const { getByTestId } = render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
+    );
+
+    const aboutUsButton = getByTestId('AboutUs-NavButton');
+
+    expect(aboutUsButton).toBeInTheDocument();
   });
 
   test('it should route when the "Matches" button was clicked', () => {
