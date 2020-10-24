@@ -1,13 +1,16 @@
 <template>
   <div class="min-w-screen">
-    Matchday
+    <MatchdayTable class="m-auto" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import MatchdayTable from '../components/MatchdayTable.vue'
 
-@Component
+@Component({
+  components: { MatchdayTable }
+})
 export default class Matchday extends Vue {}
 </script>
 
