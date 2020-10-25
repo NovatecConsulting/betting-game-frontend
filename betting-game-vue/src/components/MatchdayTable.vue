@@ -10,7 +10,10 @@
                 colspan="4"
                 class="px-8 py-5 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider"
               >
-                {{ sampleMatchday.name }}
+                {{ sampleMatchday.name }}:
+                {{ sampleMatchday.firstMatchStartDateTime | dateTime }}
+                -
+                {{ sampleMatchday.lastMatchStartDateTime | dateTime }}
               </th>
             </tr>
           </thead>
@@ -47,11 +50,10 @@
               </td>
               <td class="matchday__row-item" :class="{ 'text-base font-bold': match.result }">
                 <p class="text-gray-900">
-                  {{
-                    match.result
-                      ? match.result.final.goalsHome + ' : ' + match.result.final.goalsGuest
-                      : match.kickOffDateTime.slice(0, 10) + ' ' + match.kickOffDateTime.slice(11, 16)
-                  }}
+                  <span v-if="match.result">{{
+                    match.result.final.goalsHome + ' : ' + match.result.final.goalsGuest
+                  }}</span>
+                  <span v-else>{{ match.kickOffDateTime | dateTime }}</span>
                 </p>
               </td>
             </tr>
@@ -252,6 +254,7 @@ export default class MatchdayTable extends Vue {
       }
     ]
   }
+  created() {}
 }
 </script>
 
