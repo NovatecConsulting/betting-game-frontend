@@ -18,15 +18,28 @@ jobs:
         with:
           node-version: 12
 
-      # pipeline currently only runs on Angular project
-      - name: Install dependencies
+      # Angular project
+      - name: Install Angular dependencies
         working-directory: ./betting-game-angular
         run: yarn install
 
-      - name: Lint source files
+      - name: Lint Angular source files
         working-directory: ./betting-game-angular
         run: yarn lint
 
-      - name: Run all tests
+      - name: Run Angular tests
         working-directory: ./betting-game-angular
         run: yarn test
+
+      # VueJs project
+      - name: Install Vue dependencies
+        working-directory: ./betting-game-vue
+        run: yarn install
+
+      - name: Lint Vue source files
+        working-directory: ./betting-game-vue
+        run: yarn lint
+
+      - name: Run Vue tests
+        working-directory: ./betting-game-vue
+        run: yarn test:unit
