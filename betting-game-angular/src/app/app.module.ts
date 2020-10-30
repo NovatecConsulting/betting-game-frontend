@@ -15,9 +15,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, MatchdayComponent, NavigationComponent, TableComponent,AuthButtonComponent],
+  declarations: [
+    AppComponent,
+    HomepageComponent,
+    MatchdayComponent,
+    NavigationComponent,
+    TableComponent,
+    AuthButtonComponent,
+    UserProfileComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -30,7 +39,7 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
     AuthModule.forRoot({
       domain: 'betting-game.eu.auth0.com',
       clientId: 'rqlyAphr2es3RUjYlPAEkf2VCldAR5wL'
-    }),
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

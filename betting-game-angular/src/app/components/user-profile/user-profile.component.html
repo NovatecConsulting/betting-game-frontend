@@ -1,0 +1,5 @@
+<div *ngIf="auth.user$ | async as user" class="inline-block">
+    <p class="hover:text-white inline-block">{{ user.nickname }}</p>
+    <img src="{{ user.picture }}" width="40" height="50" class="inline-block ml-2">
+</div>
+    <app-auth-button></app-auth-button>

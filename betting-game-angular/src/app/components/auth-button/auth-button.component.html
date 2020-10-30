@@ -1,2 +1,9 @@
-<p>auth-button works!</p>
-<button (click)="auth.loginWithRedirect()">Log in</button>
+<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <button (click)="auth.logout({ returnTo: document.location.origin })" class="pl-6 hover:text-white">
+      Log out
+    </button>
+  </ng-container>
+
+  <ng-template #loggedOut>
+    <button (click)="auth.loginWithRedirect()">Log in</button>
+  </ng-template>

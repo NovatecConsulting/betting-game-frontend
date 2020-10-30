@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-auth-button',
-  template: '<button (click)="auth.loginWithRedirect()">Log in</button>',
+  templateUrl: './auth-button.component.html',
   styleUrls: ['./auth-button.component.scss']
 })
 export class AuthButtonComponent implements OnInit {
+  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
 
-  constructor(public auth: AuthService) { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
