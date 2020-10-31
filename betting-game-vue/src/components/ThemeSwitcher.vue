@@ -14,11 +14,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { vxm } from '../store/store.vuex'
 
 @Component
 export default class ThemeSwitcher extends Vue {
-  // TODO: currentTheme should get its value bind (initialized) using store's value
-  currentTheme = 'light'
+  currentTheme = vxm.theme.currentTheme
 
   get theme() {
     return this.currentTheme

@@ -9,10 +9,10 @@ const VuexModule = createModule({
 })
 
 export class MatchdayStore extends VuexModule {
-  @getter matchday?: Matchday
-  @getter matchdayIsLoading: boolean = true
-  @getter matchdayHasError: boolean = false
-  @getter matchdayErrorMsg?: string
+  matchday: Matchday | null = null
+  matchdayIsLoading: boolean = true
+  matchdayHasError: boolean = false
+  matchdayErrorMsg!: string
 
   @mutation fetchDataPending(): void {
     this.matchdayIsLoading = true
@@ -48,5 +48,21 @@ export class MatchdayStore extends VuexModule {
     } catch (error) {
       this.fetchDataError(error.message)
     }
+  }
+
+  get currentMatchday() {
+    return this.matchday
+  }
+
+  get isLoading() {
+    return this.matchdayIsLoading
+  }
+
+  get hasError() {
+    return this.matchdayHasError
+  }
+
+  get errorMessage() {
+    return this.matchdayErrorMsg
   }
 }
