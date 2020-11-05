@@ -7,10 +7,10 @@ const VuexModule = createModule({
 })
 
 export class MatchdayOverviewStore extends VuexModule {
-  @getter matchdayOverview?: MatchdayOverview
-  @getter matchdayOverviewIsLoading: boolean = true
-  @getter matchdayOverviewHasError: boolean = false
-  @getter matchdayOverviewErrorMsg?: string
+  matchdayOverview: MatchdayOverview | null = null
+  matchdayOverviewIsLoading: boolean = true
+  matchdayOverviewHasError: boolean = false
+  matchdayOverviewErrorMsg?: string
 
   @mutation fetchDataPending(): void {
     this.matchdayOverviewIsLoading = true
@@ -46,5 +46,21 @@ export class MatchdayOverviewStore extends VuexModule {
     } catch (error) {
       this.fetchDataError(error.message)
     }
+  }
+
+  get getMatchdayOverview() {
+    return this.matchdayOverview
+  }
+
+  get isLoading() {
+    return this.matchdayOverviewIsLoading
+  }
+
+  get hasError() {
+    return this.matchdayOverviewHasError
+  }
+
+  get errorMessage() {
+    return this.matchdayOverviewErrorMsg
   }
 }

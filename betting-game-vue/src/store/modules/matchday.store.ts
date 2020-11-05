@@ -12,7 +12,7 @@ export class MatchdayStore extends VuexModule {
   matchday: Matchday | null = null
   matchdayIsLoading: boolean = true
   matchdayHasError: boolean = false
-  matchdayErrorMsg!: string
+  matchdayErrorMsg?: string
 
   @mutation fetchDataPending(): void {
     this.matchdayIsLoading = true
