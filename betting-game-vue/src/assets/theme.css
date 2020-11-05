@@ -5,10 +5,12 @@
 .light {
   --color-primary: #4299e1;
   --color-secondary: #c05621;
-  --color-background: #cccccc;
+  --color-background: #fff;
+  --color-darker-background: #f7fafc;
 }
 .dark {
   --color-primary: #4299e1;
   --color-secondary: #c05621;
-  --color-background: #000;
+  --color-background: #4a5568;
+  --color-darker-background: #2d3748;
 }
