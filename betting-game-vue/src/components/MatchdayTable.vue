@@ -1,9 +1,9 @@
 <template>
-  <!-- TODO MOBILE VIEW -->
   <div class="matchday min-w-sm">
+    <!-- MATCHDAY SKELETON TABLE, DISPLAYED WHILE MATCHDAY IS LOADING -->
     <div class="matchday__pulse-table sm:px-8 md:py-4 overflow-x-auto" v-if="!matchday">
-      <div class="inline-block min-w-full shadow-lg rounded-lg overflow-hidden">
-        <table class="matchday__table leading-normal w-full table-auto bg-background">
+      <div class="inline-block shadow-lg rounded-lg overflow-hidden">
+        <table class="leading-normal table-auto w-screen md:max-w-lg mx-auto bg-background">
           <thead>
             <tr>
               <th
@@ -19,29 +19,30 @@
             <tr
               v-for="match in [0, 1, 2, 3, 4, 5, 6, 7, 8]"
               :key="match"
-              class="matchday__row hover:bg-gray-100 cursor-pointer"
+              class="matchday__row hover:bg-gray-100 cursor-pointer animate-pulse"
             >
-              <td class="matchday__row-item">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 w-10 h-10">
-                    <div class="rounded-full bg-gray-400 h-10 w-10"></div>
+              <td class="matchday__col" colspan="2">
+                <div class="matchday__match flex flex-col md:flex-row ">
+                  <div class="matchday__team-home flex items-center w-48 md:w-64">
+                    <div class="flex-shrink-0 w-10 h-10">
+                      <div class="rounded-full bg-gray-400 h-10 w-10"></div>
+                    </div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="ml-3 h-4 bg-gray-400 rounded w-32"></div>
+                    </div>
                   </div>
-                  <div class="flex-1 space-y-4 py-1">
-                    <div class="ml-3 h-4 bg-gray-400 rounded w-24"></div>
+
+                  <div class="matchday__team-guest flex items-center mt-2 md:mt-0 w-48">
+                    <div class="flex-shrink-0 w-10 h-10">
+                      <div class="rounded-full bg-gray-400 h-10 w-10"></div>
+                    </div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="ml-3 h-4 bg-gray-400 rounded w-32"></div>
+                    </div>
                   </div>
                 </div>
               </td>
-              <td class="matchday__row-item">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 w-10 h-10">
-                    <div class="rounded-full bg-gray-400 h-10 w-10"></div>
-                  </div>
-                  <div class="flex-1 space-y-4 py-1">
-                    <div class="ml-3 h-4 bg-gray-400 rounded w-24"></div>
-                  </div>
-                </div>
-              </td>
-              <td class="matchday__row-item">
+              <td class="matchday__time-score matchday__col">
                 <div class="flex-1 space-y-4 py-1">
                   <div class="h-4 bg-gray-400 rounded w-24"></div>
                 </div>
@@ -52,9 +53,10 @@
       </div>
     </div>
 
+    <!-- MATCHDAY TABLE -->
     <div class="matchday__table sm:px-8 md:py-4 overflow-x-auto" v-else>
       <div class="inline-block shadow-lg rounded-lg overflow-hidden">
-        <table class="matchday__table leading-normal table-auto max-w-lg mx-auto bg-background">
+        <table class="leading-normal table-auto max-w-lg mx-auto bg-background">
           <thead>
             <tr>
               <th
@@ -96,7 +98,7 @@
               class="matchday__row hover:bg-gray-100 cursor-pointer"
             >
               <td class="matchday__col" colspan="2">
-                <div class="matchday__match flex flex-col md:flex-row max-w-screenw-1/2 truncate">
+                <div class="matchday__match flex flex-col md:flex-row truncate">
                   <div class="matchday__team-home flex items-center w-32 md:w-64 ">
                     <div class="flex-shrink-0 w-10 h-10">
                       <img class="w-full h-full rounded-full" :src="match.home.logo" alt="" />
@@ -120,7 +122,7 @@
                   </div>
                 </div>
               </td>
-              <td class="matchday__col" :class="{ 'text-base font-bold': match.result }">
+              <td class="matchday__time-score matchday__col" :class="{ 'text-base font-bold': match.result }">
                 <p class="text-gray-900">
                   <span v-if="match.result">{{
                     match.result.final.goalsHome + ' : ' + match.result.final.goalsGuest
