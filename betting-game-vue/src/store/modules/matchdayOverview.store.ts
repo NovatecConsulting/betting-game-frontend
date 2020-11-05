@@ -52,15 +52,15 @@ export class MatchdayOverviewStore extends VuexModule {
     return this.matchdayOverview
   }
 
-  get isLoading() {
+  get getMatchdayOverviewisLoading() {
     return this.matchdayOverviewIsLoading
   }
 
-  get hasError() {
+  get getMatchdayOverviewHasError() {
     return this.matchdayOverviewHasError
   }
 
-  get errorMessage() {
+  get getMatchdayOverviewErrorMessage() {
     return this.matchdayOverviewErrorMsg
   }
 }

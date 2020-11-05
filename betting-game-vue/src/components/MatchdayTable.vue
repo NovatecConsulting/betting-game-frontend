@@ -1,12 +1,12 @@
 <template>
   <!-- TODO MOBILE VIEW -->
-  <div class="matchday min-w-sm max-w-3xl">
-    <div class="matchday__loading grid items-center my-auto mt-64" v-if="!matchday">
+  <div class="matchday min-w-sm max-w-3xl ">
+    <div class="matchday__loading flex justify-center items-center py-64" v-if="!matchday">
       <Loading />
     </div>
     <div class="px-4 sm:px-8 py-4 overflow-x-auto" v-else>
       <div class="inline-block min-w-full shadow-lg rounded-lg overflow-hidden">
-        <table class="matchday__table leading-normal w-full table-auto">
+        <table class="matchday__table leading-normal w-full table-auto bg-white">
           <thead>
             <tr>
               <th
@@ -89,8 +89,6 @@ export default class MatchdayTable extends Vue {
 </script>
 
 <style scoped>
-.matchday__loading {
-}
 .matchday__row-item {
   @apply px-5 py-4 border-b border-gray-200 text-sm;
 }
