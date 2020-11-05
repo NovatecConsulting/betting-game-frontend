@@ -1,7 +1,9 @@
 <template>
   <!-- TODO MOBILE VIEW -->
   <div class="matchday min-w-sm max-w-3xl">
-    <div class="matchday__loading" v-if="!matchday">Loading</div>
+    <div class="matchday__loading grid items-center my-auto mt-64" v-if="!matchday">
+      <Loading />
+    </div>
     <div class="px-4 sm:px-8 py-4 overflow-x-auto" v-else>
       <div class="inline-block min-w-full shadow-lg rounded-lg overflow-hidden">
         <table class="matchday__table leading-normal w-full table-auto">
@@ -69,9 +71,12 @@
 import { Component, Vue } from 'vue-property-decorator'
 // eslint-disable-next-line no-unused-vars
 import Matchday from '../models/Matchday'
+import Loading from '../components/Loading.vue'
 import { vxm } from '../store/store.vuex'
 
-@Component({})
+@Component({
+  components: { Loading }
+})
 export default class MatchdayTable extends Vue {
   matchdayStore = vxm.matchdayStore
   created() {
@@ -84,6 +89,8 @@ export default class MatchdayTable extends Vue {
 </script>
 
 <style scoped>
+.matchday__loading {
+}
 .matchday__row-item {
   @apply px-5 py-4 border-b border-gray-200 text-sm;
 }
