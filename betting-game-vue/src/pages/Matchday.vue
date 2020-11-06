@@ -1,6 +1,8 @@
 <template>
-  <div class="min-w-screen">
-    <MatchdayTable class="m-auto" />
+  <div class="matchday min-w-screen bg-gray-100">
+    <div class="matchday__table sm:px-8 md:py-4 overflow-x-auto">
+      <MatchdayTable class="m-auto" />
+    </div>
   </div>
 </template>
 
@@ -15,4 +17,8 @@ export default class Matchday extends Vue {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.matchday {
+  min-height: calc(100vh - 64px);
+}
+</style>

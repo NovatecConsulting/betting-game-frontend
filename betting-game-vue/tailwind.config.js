@@ -14,23 +14,26 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      primary: 'var(--color-primary)',
+      primary: {
+        100: 'var(--color-primary)',
+        200: 'var(--color-dark-primary)'
+      },
       secondary: 'var(--color-secondary)',
-      background: 'var(--color-background)',
-      darkerbg: 'var(--color-darker-background)',
       black: '#000',
-      white: '#fff',
-
+      white: 'var(--color-white)',
+      const: {
+        white: '#fff'
+      },
       gray: {
-        100: '#f7fafc',
-        200: '#edf2f7',
-        300: '#e2e8f0',
-        400: '#cbd5e0',
-        500: '#a0aec0',
-        600: '#718096',
-        700: '#4a5568',
-        800: '#2d3748',
-        900: '#1a202c'
+        100: 'var(--color-gray-100)',
+        200: 'var(--color-gray-200)',
+        300: 'var(--color-gray-300)',
+        400: 'var(--color-gray-400)',
+        500: 'var(--color-gray-500)',
+        600: 'var(--color-gray-600)',
+        700: 'var(--color-gray-700)',
+        800: 'var(--color-gray-800)',
+        900: 'var(--color-gray-900)'
       },
       red: {
         100: '#fff5f5',

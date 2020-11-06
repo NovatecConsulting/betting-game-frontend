@@ -1,5 +1,5 @@
 <template>
-  <tbody class="">
+  <tbody>
     <tr class="match__row hover:bg-gray-100 cursor-pointer" @click="toggleBetting()">
       <td class="match__col" colspan="2">
         <div class="match__match flex flex-col md:flex-row truncate">
@@ -34,7 +34,7 @@
       </td>
     </tr>
     <transition name="fade" mode="in-out">
-      <tr class="h-16 bg-green-100 text-primary" v-show="displayBetting">
+      <tr class="h-16 bg-green-100 text-primary text-sm" v-show="displayBetting">
         <th colspan="3" v-if="displayBettingContent" class="match__bet">PLACEHOLDER FOR BET</th>
       </tr>
     </transition>
@@ -45,6 +45,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator'
 // eslint-disable-next-line no-unused-vars
 import Match from '../models/Match'
+import { vxm } from '../store/store.vuex'
 
 @Component
 export default class MatchRowComponent extends Vue {
@@ -52,14 +53,20 @@ export default class MatchRowComponent extends Vue {
   displayBetting = false
   displayBettingContent = false
 
+  get userIsLoggedIn() {
+    return vxm.user.isLoggedIn
+  }
   toggleBetting() {
-    this.displayBetting = !this.displayBetting
-    if (!this.displayBettingContent) {
-      setTimeout(() => {
+    console.log(this.match)
+    if (this.userIsLoggedIn && this.match?.result == null) {
+      this.displayBetting = !this.displayBetting
+      if (!this.displayBettingContent) {
+        setTimeout(() => {
+          this.toggleBettingContent()
+        }, 200)
+      } else {
         this.toggleBettingContent()
-      }, 200)
-    } else {
-      this.toggleBettingContent()
+      }
     }
   }
 

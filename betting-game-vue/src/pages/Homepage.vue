@@ -1,5 +1,5 @@
 <template>
-  <div class="homepage min-w-screen bg-background grid items-center">
+  <div class="homepage min-w-screen bg-gray-800 grid items-center">
     <div class="text-3xl sm:text-6xl text-gray-200 tracking-wide">
       {{ $t('homepage.title') }}
 
