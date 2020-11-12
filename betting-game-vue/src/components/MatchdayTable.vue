@@ -89,7 +89,7 @@
         </thead>
 
         <tbody>
-          <MatchRow v-for="match in matchday.matches" :key="match.id" :match="match" />
+          <MatchRow v-for="(match, index) in matchday.matches" :key="match.id" :match="match" :index="index" />
         </tbody>
       </table>
     </div>
