@@ -34,7 +34,7 @@
           <div class="match__time-score--home">
             {{ match.result.final.goalsHome }}
           </div>
-          <div class="m-1 mt-0">:</div>
+          <div class="m-1 mt-0 h-4"><span class="hidden md:block">:</span></div>
           <div class="match__time-score--guest">
             {{ match.result.final.goalsGuest }}
           </div>
