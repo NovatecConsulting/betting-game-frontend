@@ -68,7 +68,6 @@ export default class MatchRowComponent extends Vue {
     return vxm.user.isLoggedIn
   }
   toggleBetting() {
-    console.log(this.match)
     if (this.userIsLoggedIn && this.match?.result == null) {
       this.displayBetting = !this.displayBetting
       if (!this.displayBettingContent) {
