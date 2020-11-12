@@ -50,7 +50,7 @@ export class MatchdayStore extends VuexModule {
     }
   }
 
-  get currentMatchday() {
+  get getMatchday() {
     return this.matchday
   }
 

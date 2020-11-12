@@ -57,8 +57,8 @@
         <thead>
           <tr>
             <th
-              colspan="3"
-              class="px-8 py-5 border-b-2 border-gray-200 bg-gray-200 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider"
+              colspan="4"
+              class="px-8 py-5 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider"
             >
               {{ matchday.name }}:
               {{ matchday.firstMatchStartDateTime | dateTime }}
@@ -88,17 +88,15 @@
           </tr>
         </thead>
 
-        <tbody>
-          <MatchRow v-for="(match, index) in matchday.matches" :key="match.id" :match="match" :index="index" />
-        </tbody>
+        <MatchRow v-for="(match, index) in matchday.matches" :key="match.id" :match="match" :index="index" />
       </table>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+/* eslint-disable no-unused-vars */
 import { Component, Vue } from 'vue-property-decorator'
-// eslint-disable-next-line no-unused-vars
 import Matchday from '../models/Matchday'
 import MatchRow from '../components/MatchRow.vue'
 import { vxm } from '../store/store.vuex'
@@ -108,8 +106,9 @@ import { vxm } from '../store/store.vuex'
 })
 export default class MatchdayTable extends Vue {
   matchdayStore = vxm.matchdayStore
+
   created() {
-    this.$store.dispatch('getCurrentMatchday')
+    this.$store.dispatch('getSpecificMatchday', { year: 2020, matchday: 8 })
   }
 
   getMatchday() {
@@ -117,7 +116,7 @@ export default class MatchdayTable extends Vue {
   }
 
   get matchday(): Matchday | null {
-    return this.matchdayStore.currentMatchday
+    return this.matchdayStore.getMatchday
   }
   get matchdayIsLoading(): boolean {
     return this.matchdayStore.isLoading

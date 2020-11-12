@@ -27,13 +27,19 @@
         </div>
       </td>
       <td
-        class="match__time-score match__col"
+        class="match__time-score match__col text-gray-800"
         :class="({ 'text-base font-bold': match.result }, { 'border-none': index == 8 })"
       >
-        <p class="text-gray-900">
-          <span v-if="match.result">{{ match.result.final.goalsHome + ' : ' + match.result.final.goalsGuest }}</span>
-          <span v-else>{{ match.kickOffDateTime | dateTime }}</span>
-        </p>
+        <div class="font-bold flex flex-col md:flex-row" v-if="match.result">
+          <div class="match__time-score--home">
+            {{ match.result.final.goalsHome }}
+          </div>
+          <div class="m-1 mt-0">:</div>
+          <div class="match__time-score--guest">
+            {{ match.result.final.goalsGuest }}
+          </div>
+        </div>
+        <span v-else>{{ match.kickOffDateTime | dateTime }}</span>
       </td>
     </tr>
     <transition name="fade" mode="in-out">
