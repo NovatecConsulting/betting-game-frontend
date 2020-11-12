@@ -43,7 +43,7 @@
       </td>
     </tr>
     <transition name="fade" mode="in-out">
-      <tr class="h-16 bg-gray-100 text-primary text-sm" v-show="displayBetting">
+      <tr class="h-16 bg-gray-100 text-gray-800 text-sm" v-show="displayBetting">
         <th colspan="3" v-if="displayBettingContent" class="match__bet">PLACEHOLDER FOR BET</th>
       </tr>
     </transition>

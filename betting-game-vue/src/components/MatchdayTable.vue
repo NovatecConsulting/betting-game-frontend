@@ -108,7 +108,9 @@ export default class MatchdayTable extends Vue {
   matchdayStore = vxm.matchdayStore
 
   created() {
-    this.$store.dispatch('getSpecificMatchday', { year: 2020, matchday: 8 })
+    this.$store.dispatch('getCurrentMatchday')
+
+    // this.$store.dispatch('getSpecificMatchday', { year: 2020, matchday: 8 })  //date goes here
   }
 
   getMatchday() {
