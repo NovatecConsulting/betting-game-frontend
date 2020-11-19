@@ -128,6 +128,6 @@ export default class MatchdayTable extends Vue {
 
 <style scoped>
 .matchday__col {
-  @apply px-5 py-4 border-b border-gray-200 text-sm;
+  @apply px-5 py-4 border-b-2 border-gray-200 text-sm;
 }
 </style>

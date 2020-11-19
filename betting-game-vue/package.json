@@ -11,9 +11,11 @@
     "lint:fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
+    "autoprefixer": "^9.8.6",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
-    "tailwindcss": "^2.0.1",
+    "postcss": "^7.0.35",
+    "tailwindcss": "^2.0.1-compat",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-i18n": "^8.17.3",
