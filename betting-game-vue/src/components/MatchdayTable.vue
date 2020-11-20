@@ -7,7 +7,7 @@
           <tr>
             <th
               colspan="4"
-              class="px-8 py-5 border-b-2 border-gray-200 bg-gray-200 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider"
+              class="px-8 py-5 border-b-2 border-gray-200 dark:border-gray-800 bg-gray-200 dark:bg-gray-900 text-left text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider"
             >
               Matchday
             </th>
@@ -18,32 +18,32 @@
           <tr
             v-for="match in [0, 1, 2, 3, 4, 5, 6, 7, 8]"
             :key="match"
-            class="matchday__row hover:bg-gray-100 cursor-pointer animate-pulse"
+            class="matchday__row cursor-pointer bg-white dark:bg-gray-900"
           >
-            <td class="matchday__col" colspan="2">
-              <div class="matchday__match flex flex-col md:flex-row ">
+            <td class="matchday__col animate-pulse" colspan="2">
+              <div class="matchday__match flex flex-col md:flex-row">
                 <div class="matchday__team-home flex items-center w-48 md:w-64">
                   <div class="flex-shrink-0 w-10 h-10">
-                    <div class="rounded-full bg-gray-400 h-10 w-10"></div>
+                    <div class="rounded-full bg-gray-400 dark:bg-gray-600 h-10 w-10"></div>
                   </div>
                   <div class="flex-1 space-y-4 py-1">
-                    <div class="ml-3 h-4 bg-gray-400 rounded w-32"></div>
+                    <div class="ml-3 h-4 bg-gray-400 dark:bg-gray-600 rounded w-32"></div>
                   </div>
                 </div>
 
                 <div class="matchday__team-guest flex items-center mt-2 md:mt-0 w-48">
                   <div class="flex-shrink-0 w-10 h-10">
-                    <div class="rounded-full bg-gray-400 h-10 w-10"></div>
+                    <div class="rounded-full bg-gray-400 dark:bg-gray-600 h-10 w-10"></div>
                   </div>
                   <div class="flex-1 space-y-4 py-1">
-                    <div class="ml-3 h-4 bg-gray-400 rounded w-32"></div>
+                    <div class="ml-3 h-4 bg-gray-400 dark:bg-gray-600 rounded w-32"></div>
                   </div>
                 </div>
               </div>
             </td>
-            <td class="matchday__time-score matchday__col">
+            <td class="matchday__time-score matchday__col animate-pulse">
               <div class="flex-1 space-y-4 py-1">
-                <div class="h-4 bg-gray-400 rounded w-24"></div>
+                <div class="h-4 bg-gray-400 dark:bg-gray-600 rounded w-24"></div>
               </div>
             </td>
           </tr>
@@ -53,12 +53,12 @@
 
     <!-- MATCHDAY TABLE -->
     <div class="inline-block shadow-lg rounded-lg overflow-hidden" v-else>
-      <table class="leading-normal table-auto max-w-lg mx-auto bg-white">
+      <table class="leading-normal table-auto max-w-lg mx-auto">
         <thead>
           <tr>
             <th
               colspan="4"
-              class="px-8 py-5 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider"
+              class="px-8 py-5 border-b-2 border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-left text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider"
             >
               {{ matchday.name }}:
               {{ matchday.firstMatchStartDateTime | dateTime }}
@@ -128,6 +128,6 @@ export default class MatchdayTable extends Vue {
 
 <style scoped>
 .matchday__col {
-  @apply px-5 py-4 border-b-2 border-gray-200 text-sm;
+  @apply px-5 py-4 border-b-2 border-gray-200 dark:border-gray-800 text-sm;
 }
 </style>

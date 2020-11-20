@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="light">
+  <div id="app">
     <Navbar @logout="logout" />
     <router-view />
   </div>

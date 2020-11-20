@@ -1,5 +1,5 @@
 <template>
-  <span class="pl-2 whitespace-no-wrap text-white">
+  <span class="pl-2 whitespace-nowrap text-white">
     <svg
       class="accent-color-gradients"
       xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,11 @@
         stroke-width="22"
       ></path>
     </svg>
-    <span class="h-4 overflow-hidden text-xl"> NovaTipp </span>
+    <span
+      class="h-4 w-4 overflow-hidden text-xl bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-blue-400"
+    >
+      NovaTipp
+    </span>
   </span>
 </template>
 

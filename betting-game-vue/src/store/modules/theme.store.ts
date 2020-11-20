@@ -11,7 +11,7 @@ export class ThemeStore extends VuexModule {
 
   @mutation changeTheme(value: string) {
     this.theme = value
-    const app = document.getElementById('app')
+    const app = document.querySelector('html')
     if (app) {
       app.className = value
     }

@@ -1,6 +1,9 @@
 <template>
   <tbody>
-    <tr class="match__row hover:bg-gray-100 cursor-pointer" @click="toggleBetting()">
+    <tr
+      class="match__row bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+      @click="toggleBetting()"
+    >
       <td class="match__col" colspan="2" :class="{ 'border-none': index == 8 }">
         <div class="match__match flex flex-col md:flex-row truncate">
           <div class="match__team-home flex items-center w-32 md:w-64 ">
@@ -8,7 +11,7 @@
               <img class="w-full h-full rounded-full" :src="match.home.logo" alt="" />
             </div>
             <div class="ml-3">
-              <p class="text-gray-900 whitespace-no-wrap">
+              <p class="whitespace-no-wrap">
                 {{ match.home.name }}
               </p>
             </div>
@@ -19,7 +22,7 @@
               <img class="w-full h-full rounded-full" :src="match.guest.logo" alt="" />
             </div>
             <div class="ml-3">
-              <p class="text-gray-900 whitespace-no-wrap">
+              <p class="whitespace-no-wrap">
                 {{ match.guest.name }}
               </p>
             </div>
@@ -27,7 +30,7 @@
         </div>
       </td>
       <td
-        class="match__time-score match__col text-gray-800"
+        class="match__time-score match__col"
         :class="({ 'text-base font-bold': match.result }, { 'border-none': index == 8 })"
       >
         <div class="font-bold flex flex-col md:flex-row" v-if="match.result">
@@ -87,7 +90,7 @@ export default class MatchRowComponent extends Vue {
 </script>
 <style scoped>
 .match__col {
-  @apply px-5 py-4 border-b-2 border-gray-200 text-sm;
+  @apply px-5 py-4 border-b-2 border-gray-100 dark:border-gray-800 text-sm;
 }
 .fade-enter-active,
 .fade-leave-active {

@@ -1,8 +1,8 @@
 <template>
-  <div class="homepage min-w-screen bg-gray-100">
+  <div class="homepage min-w-screen bg-gray-100 dark:bg-gray-800">
     <div class="homepage__content flex flex-col md:flex-row">
       <div class="homepage__title flex items-center">
-        <div class="text-3xl sm:text-6xl text-gray-800 tracking-wide p-8">
+        <div class="text-3xl sm:text-6xl text-gray-800 dark:text-gray-200 tracking-wide p-8">
           {{ $t('homepage.title') }}
         </div>
       </div>
