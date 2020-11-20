@@ -2,7 +2,7 @@
   <div class="matchday min-w-sm">
     <!-- MATCHDAY SKELETON TABLE, DISPLAYED WHILE MATCHDAY IS LOADING -->
     <div class="inline-block shadow-lg rounded-lg overflow-hidden" v-if="!matchday">
-      <table class="leading-normal table-auto w-screen md:max-w-lg mx-auto bg-white">
+      <table class="leading-normal table-auto w-screen bg-white">
         <thead>
           <tr>
             <th
@@ -57,13 +57,18 @@
         <thead>
           <tr>
             <th
-              colspan="4"
-              class="px-8 py-5 border-b-2 border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 text-left text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider"
+              colspan="3"
+              class="pl-6 py-5 border-b-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-left text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider"
             >
               {{ matchday.name }}:
               {{ matchday.firstMatchStartDateTime | dateTime }}
               -
               {{ matchday.lastMatchStartDateTime | dateTime }}
+            </th>
+            <th
+              colspan="1"
+              class="px-6 py-5 border-b-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-left text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider"
+            >
               <button
                 class="float-right cursor-pointer"
                 :class="{ 'animate-spin': matchdayIsLoading }"

@@ -4,7 +4,7 @@
       class="match__row bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
       @click="toggleBetting()"
     >
-      <td class="match__col" colspan="2" :class="{ 'border-none': index == 8 }">
+      <td class="match__col" colspan="3" :class="{ 'border-none': index == 8 }">
         <div class="match__match flex flex-col md:flex-row truncate">
           <div class="match__team-home flex items-center w-32 md:w-64 ">
             <div class="flex-shrink-0 w-10 h-10">
@@ -90,7 +90,7 @@ export default class MatchRowComponent extends Vue {
 </script>
 <style scoped>
 .match__col {
-  @apply px-5 py-4 border-b-2 border-gray-100 dark:border-gray-800 text-sm;
+  @apply pl-5 pr-4 py-4 border-b-2 border-gray-100 dark:border-gray-800 text-sm;
 }
 .fade-enter-active,
 .fade-leave-active {

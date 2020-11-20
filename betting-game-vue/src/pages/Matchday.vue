@@ -1,7 +1,9 @@
 <template>
-  <div class="matchday main-content min-w-screen bg-gray-100 dark:bg-gray-800">
-    <div class="matchday__table sm:px-8 md:py-4 overflow-x-auto">
-      <MatchdayTable class="m-auto" />
+  <div class="matchday main-content min-w-screen p-4 sm:px-16 bg-gray-100 dark:bg-gray-800">
+    <div class="max-w-2xl mx-auto">
+      <MatchdayChooser class="mb-4" />
+
+      <MatchdayTable />
     </div>
   </div>
 </template>
@@ -9,9 +11,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import MatchdayTable from '../components/MatchdayTable.vue'
+import MatchdayChooser from '../components/MatchdayChooser.vue'
 
 @Component({
-  components: { MatchdayTable }
+  components: { MatchdayTable, MatchdayChooser }
 })
 export default class Matchday extends Vue {}
 </script>
