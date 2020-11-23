@@ -1,8 +1,8 @@
 <template>
-  <div class="matchday min-w-sm">
+  <div class="matchday min-w-sm ">
     <!-- MATCHDAY SKELETON TABLE, DISPLAYED WHILE MATCHDAY IS LOADING -->
-    <div class="inline-block shadow-lg rounded-lg overflow-hidden" v-if="!matchday">
-      <table class="leading-normal table-auto w-screen bg-white">
+    <div class="inline-block shadow-lg rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-900" v-if="!matchday">
+      <table class="leading-normal table-auto w-screen max-w-lg mx-auto bg-white">
         <thead>
           <tr>
             <th
@@ -31,7 +31,7 @@
                   </div>
                 </div>
 
-                <div class="matchday__team-guest flex items-center mt-2 md:mt-0 w-48">
+                <div class="matchday__team-guest flex items-center mt-2 md:mt-0 w-48 md:w-64">
                   <div class="flex-shrink-0 w-10 h-10">
                     <div class="rounded-full bg-gray-400 dark:bg-gray-600 h-10 w-10"></div>
                   </div>
@@ -43,7 +43,7 @@
             </td>
             <td class="matchday__time-score matchday__col animate-pulse">
               <div class="flex-1 space-y-4 py-1">
-                <div class="h-4 bg-gray-400 dark:bg-gray-600 rounded w-24"></div>
+                <div class="h-4 bg-gray-400 dark:bg-gray-600 rounded w-16"></div>
               </div>
             </td>
           </tr>
@@ -113,9 +113,9 @@ export default class MatchdayTable extends Vue {
   matchdayStore = vxm.matchdayStore
 
   created() {
-    this.$store.dispatch('getCurrentMatchday')
+    //this.$store.dispatch('matchday/getCurrentMatchday')
 
-    // this.$store.dispatch('getSpecificMatchday', { year: 2020, matchday: 8 })  //date goes here
+    this.$store.dispatch('getSpecificMatchday', { year: 2020, matchday: 9 }) //date goes here
   }
 
   getMatchday() {

@@ -26,7 +26,7 @@ describe('Matchday.store', () => {
     it('should call fetchDataPending and change to matchdayOverviewIsLoading=true and matchdayOverviewHasError=false.', () => {
       const store = new MatchdayOverviewStore()
 
-      store.fetchDataPending()
+      store.fetchDataOverviewPending()
 
       expect(store.matchdayOverview).toBeUndefined()
       expect(store.matchdayOverviewIsLoading).toBeTruthy()
@@ -37,7 +37,7 @@ describe('Matchday.store', () => {
     it('should call fetchDataSuccess and change to matchdayOverviewIsLoading=false and matchdayOverviewHasError=false and sampleMatchday.', () => {
       const store = new MatchdayOverviewStore()
 
-      store.fetchDataSuccess(sampleMatchdayOverview)
+      store.fetchDataOverviewSuccess(sampleMatchdayOverview)
 
       expect(store.matchdayOverview).toEqual(sampleMatchdayOverview)
       expect(store.matchdayOverviewIsLoading).toBeFalsy()
@@ -48,7 +48,7 @@ describe('Matchday.store', () => {
     it('should call fetchDataError and change to matchdayOverviewIsLoading=false and matchdayOverviewHasError=true and error message.', () => {
       const store = new MatchdayOverviewStore()
 
-      store.fetchDataError('error')
+      store.fetchDataOverviewError('error')
 
       expect(store.matchdayOverview).toBeUndefined()
       expect(store.matchdayOverviewIsLoading).toBeFalsy()

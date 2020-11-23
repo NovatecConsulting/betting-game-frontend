@@ -6,7 +6,7 @@
     >
       <td class="match__col" colspan="3" :class="{ 'border-none': index == 8 }">
         <div class="match__match flex flex-col md:flex-row truncate">
-          <div class="match__team-home flex items-center w-32 md:w-64 ">
+          <div class="match__team-home flex items-center w-48 md:w-64 ">
             <div class="flex-shrink-0 w-10 h-10">
               <img class="w-full h-full rounded-full" :src="match.home.logo" alt="" />
             </div>
@@ -17,7 +17,7 @@
             </div>
           </div>
 
-          <div class="match__team-guest flex items-center mt-2 md:mt-0">
+          <div class="match__team-guest flex items-center mt-2 md:mt-0 w-48 md:w-64">
             <div class="flex-shrink-0 w-10 h-10">
               <img class="w-full h-full rounded-full" :src="match.guest.logo" alt="" />
             </div>
@@ -33,7 +33,7 @@
         class="match__time-score match__col"
         :class="({ 'text-base font-bold': match.result }, { 'border-none': index == 8 })"
       >
-        <div class="font-bold flex flex-col md:flex-row" v-if="match.result">
+        <div class="font-bold flex flex-col md:flex-row w-16" v-if="match.result">
           <div class="match__time-score--home">
             {{ match.result.final.goalsHome }}
           </div>
@@ -42,7 +42,8 @@
             {{ match.result.final.goalsGuest }}
           </div>
         </div>
-        <span v-else>{{ match.kickOffDateTime | dateTime }}</span>
+
+        <div v-else class="w-16">{{ match.kickOffDateTime | dateTime }}</div>
       </td>
     </tr>
     <transition name="fade" mode="in-out">

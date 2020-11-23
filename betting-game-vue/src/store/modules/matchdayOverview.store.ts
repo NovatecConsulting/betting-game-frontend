@@ -12,39 +12,40 @@ export class MatchdayOverviewStore extends VuexModule {
   matchdayOverviewHasError: boolean = false
   matchdayOverviewErrorMsg?: string
 
-  @mutation fetchDataPending(): void {
+  @mutation fetchDataOverviewPending(): void {
     this.matchdayOverviewIsLoading = true
     this.matchdayOverviewHasError = false
   }
 
-  @mutation fetchDataSuccess(payload: MatchdayOverview): void {
+  @mutation fetchDataOverviewSuccess(payload: MatchdayOverview): void {
     this.matchdayOverviewIsLoading = false
     this.matchdayOverviewHasError = false
     this.matchdayOverview = payload
   }
-  @mutation fetchDataError(payload: string): void {
+  @mutation fetchDataOverviewError(payload: string): void {
     this.matchdayOverviewIsLoading = false
     this.matchdayOverviewHasError = true
     this.matchdayOverviewErrorMsg = payload
   }
 
   @action async getAllMatchesOfCurrentSeason() {
-    this.fetchDataPending()
+    this.fetchDataOverviewPending()
     try {
       const response = await http.get('/matchdays/current-season')
-      this.fetchDataSuccess(response.data)
+      console.log('success')
+      this.fetchDataOverviewSuccess(response.data)
     } catch (error) {
-      this.fetchDataError(error.message)
+      this.fetchDataOverviewError(error.message)
     }
   }
 
   @action async getAllMatchesOfSeason(season: string) {
-    this.fetchDataPending()
+    this.fetchDataOverviewPending()
     try {
       const response = await http.get(`/matchdays/${season}`)
-      this.fetchDataSuccess(response.data)
+      this.fetchDataOverviewSuccess(response.data)
     } catch (error) {
-      this.fetchDataError(error.message)
+      this.fetchDataOverviewError(error.message)
     }
   }
 

@@ -9,6 +9,7 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable no-unused-vars */
 import { Component, Vue } from 'vue-property-decorator'
 import MatchdayTable from '../components/MatchdayTable.vue'
 import MatchdayChooser from '../components/MatchdayChooser.vue'
