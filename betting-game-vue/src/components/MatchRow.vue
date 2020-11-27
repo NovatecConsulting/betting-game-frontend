@@ -47,8 +47,10 @@
       </td>
     </tr>
     <transition name="fade" mode="in-out">
-      <tr class="h-16 bg-gray-100 text-gray-800 text-sm" v-show="displayBetting">
-        <th colspan="3" v-if="displayBettingContent" class="match__bet">PLACEHOLDER FOR BET</th>
+      <tr class="h-16 bg-gray-100 text-gray-800 text-sm" v-if="displayBetting">
+        <th colspan="4" v-if="displayBettingContent" class="match__bet">
+          <MatchBet />
+        </th>
       </tr>
     </transition>
   </tbody>
@@ -59,9 +61,10 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 // eslint-disable-next-line no-unused-vars
 import Match from '../models/Match'
 import { vxm } from '../store/store.vuex'
+import MatchBet from './MatchBet.vue'
 
-@Component
-export default class MatchRowComponent extends Vue {
+@Component({ components: { MatchBet } })
+export default class MatchRow extends Vue {
   @Prop() readonly match: Match | undefined
   @Prop() readonly index?: Number
 
@@ -71,6 +74,7 @@ export default class MatchRowComponent extends Vue {
   get userIsLoggedIn() {
     return vxm.user.isLoggedIn
   }
+
   toggleBetting() {
     if (this.userIsLoggedIn && this.match?.result == null) {
       this.displayBetting = !this.displayBetting
