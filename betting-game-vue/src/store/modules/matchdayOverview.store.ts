@@ -39,7 +39,6 @@ export class MatchdayOverviewStore extends VuexModule {
     this[OVERVIEW_FETCH_DATA_PENDING]()
     try {
       const response = await http.get('/matchdays/current-season')
-      console.log('success')
       this[OVERVIEW_FETCH_DATA_SUCCESS](response.data)
     } catch (error) {
       this[OVERVIEW_FETCH_DATA_ERROR](error.message)
