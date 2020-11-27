@@ -1,5 +1,4 @@
 // Matchday Store
-export const MATCHDAY_CHOOSE = '[Matchday Chooser] Choose Matchday'
 export const MATCHDAY_GET_CURRENT = '[Matchday] Get Current Matchday'
 export const MATCHDAY_GET_SPECIFIC = '[Matchday] Get Specific Matchday'
 export const MATCHDAY_FETCH_DATA_PENDING = '[Matchday] Fetch Data Pending'
