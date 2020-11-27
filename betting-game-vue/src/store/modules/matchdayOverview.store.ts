@@ -2,7 +2,8 @@ import { createModule, mutation, action, getter } from 'vuex-class-component'
 import MatchdayOverview from '@/models/MatchdayOverview'
 import http from '@/utils/Http'
 import {
-  OVERVIEW_GET_ALL_MATCHES,
+  OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON,
+  OVERVIEW_GET_ALL_MATCHES_SPECIFIC_SEASON,
   OVERVIEW_FETCH_DATA_PENDING,
   OVERVIEW_FETCH_DATA_ERROR,
   OVERVIEW_FETCH_DATA_SUCCESS
@@ -34,7 +35,7 @@ export class MatchdayOverviewStore extends VuexModule {
     this.matchdayOverviewErrorMsg = payload
   }
 
-  @action async [OVERVIEW_GET_ALL_MATCHES]() {
+  @action async [OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON]() {
     this[OVERVIEW_FETCH_DATA_PENDING]()
     try {
       const response = await http.get('/matchdays/current-season')
@@ -45,7 +46,7 @@ export class MatchdayOverviewStore extends VuexModule {
     }
   }
 
-  @action async getAllMatchesOfSeason(season: string) {
+  @action async [OVERVIEW_GET_ALL_MATCHES_SPECIFIC_SEASON](season: string) {
     this[OVERVIEW_FETCH_DATA_PENDING]()
     try {
       const response = await http.get(`/matchdays/${season}`)

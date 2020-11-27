@@ -6,7 +6,8 @@ export const MATCHDAY_FETCH_DATA_SUCCESS = '[Matchday] Fetch Data Success'
 export const MATCHDAY_FETCH_DATA_ERROR = '[Matchday] Fetch Data Error'
 
 //Matchday Overview Store
-export const OVERVIEW_GET_ALL_MATCHES = '[Matchday Overview] Get all Matches'
+export const OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON = '[Matchday Overview] Get All Matches Current Season'
+export const OVERVIEW_GET_ALL_MATCHES_SPECIFIC_SEASON = '[Matchday Overview] Get All Matches Specific Season'
 export const OVERVIEW_FETCH_DATA_PENDING = '[Matchday Overview] Fetch Data Pending'
 export const OVERVIEW_FETCH_DATA_SUCCESS = '[Matchday Overview] Fetch Data Success'
 export const OVERVIEW_FETCH_DATA_ERROR = '[Matchday Overview] Fetch Data Error'

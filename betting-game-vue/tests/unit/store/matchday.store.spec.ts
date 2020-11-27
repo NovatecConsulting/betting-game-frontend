@@ -1,6 +1,13 @@
 import { MatchdayStore } from '@/store/modules/matchday.store'
 import Matchday from '@/models/Matchday'
 import http from '@/utils/Http'
+import {
+  MATCHDAY_GET_CURRENT,
+  MATCHDAY_GET_SPECIFIC,
+  MATCHDAY_FETCH_DATA_PENDING,
+  MATCHDAY_FETCH_DATA_ERROR,
+  MATCHDAY_FETCH_DATA_SUCCESS
+} from '@/store/actions'
 
 jest.mock('@/utils/Http')
 
@@ -21,7 +28,7 @@ describe('Matchday.store', () => {
     it('should call fetchDataPending and change to matchdayIsLoading=true and matchdayHasError=false.', () => {
       const store = new MatchdayStore()
 
-      store.fetchDataPending()
+      store[MATCHDAY_FETCH_DATA_PENDING]()
 
       expect(store.matchday).toBeUndefined()
       expect(store.matchdayIsLoading).toBeTruthy()
@@ -32,7 +39,7 @@ describe('Matchday.store', () => {
     it('should call fetchDataSuccess and change to matchdayIsLoading=false and matchdayHasError=false and sampleMatchday.', () => {
       const store = new MatchdayStore()
 
-      store.fetchDataSuccess(sampleMatchday)
+      store[MATCHDAY_FETCH_DATA_SUCCESS](sampleMatchday)
 
       expect(store.matchday).toEqual(sampleMatchday)
       expect(store.matchdayIsLoading).toBeFalsy()
@@ -43,7 +50,7 @@ describe('Matchday.store', () => {
     it('should call fetchDataError and change to matchdayIsLoading=false and matchdayHasError=true and error message.', () => {
       const store = new MatchdayStore()
 
-      store.fetchDataError('error')
+      store[MATCHDAY_FETCH_DATA_ERROR]('error')
 
       expect(store.matchday).toBeUndefined()
       expect(store.matchdayIsLoading).toBeFalsy()
@@ -60,7 +67,7 @@ describe('Matchday.store', () => {
           data: sampleMatchday
         })
 
-        await store.getCurrentMatchday()
+        await store[MATCHDAY_GET_CURRENT]()
 
         expect(store.matchday).toEqual(sampleMatchday)
         expect(store.matchdayIsLoading).toBeFalsy()
@@ -72,7 +79,7 @@ describe('Matchday.store', () => {
         const store = new MatchdayStore()
         ;(http.get as jest.Mock).mockRejectedValue(new Error('error'))
 
-        await store.getCurrentMatchday()
+        await store[MATCHDAY_GET_CURRENT]()
 
         expect(store.matchday).toBeUndefined()
         expect(store.matchdayIsLoading).toBeFalsy()
@@ -89,7 +96,7 @@ describe('Matchday.store', () => {
           data: sampleMatchday
         })
 
-        await store.getSpecificMatchday({ year: '2020', matchday: '1' })
+        await store[MATCHDAY_GET_SPECIFIC]({ year: '2020', matchday: '1' })
 
         expect(store.matchday).toEqual(sampleMatchday)
         expect(store.matchdayIsLoading).toBeFalsy()
@@ -101,7 +108,7 @@ describe('Matchday.store', () => {
         const store = new MatchdayStore()
         ;(http.get as jest.Mock).mockRejectedValue(new Error('error'))
 
-        await store.getSpecificMatchday({ year: '2020', matchday: '1' })
+        await store[MATCHDAY_GET_SPECIFIC]({ year: '2020', matchday: '1' })
 
         expect(store.matchday).toBeUndefined()
         expect(store.matchdayIsLoading).toBeFalsy()
