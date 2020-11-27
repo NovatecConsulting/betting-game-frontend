@@ -18,7 +18,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { vxm } from '../store/store.vuex'
 import MatchdayOverview from '../models/MatchdayOverview'
 import Matchday from '../models/Matchday'
-import { OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON, MATCHDAY_GET_SPECIFIC } from '../store/actions'
+import { OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON, MATCHDAY_GET_SPECIFIC, MATCHDAY_CHOOSE } from '../store/actions'
 
 @Component
 export default class MatchdayChooser extends Vue {
@@ -35,13 +35,18 @@ export default class MatchdayChooser extends Vue {
 
   set selectedMatchday(matchdayId: number) {
     this.$store.dispatch(MATCHDAY_GET_SPECIFIC, { year: 2020, matchday: matchdayId })
+    this.$store.commit(MATCHDAY_CHOOSE, matchdayId)
   }
 
   get selectedMatchday() {
-    if (this.matchdayOverviewStore.matchdayOverview) {
-      return this.matchdayOverviewStore.matchdayOverview.current
+    if (vxm.matchdayStore.selectedMatchdayId) {
+      return vxm.matchdayStore.selectedMatchdayId
     } else {
-      return 1
+      if (this.matchdayOverviewStore.matchdayOverview) {
+        return this.matchdayOverviewStore.matchdayOverview.current
+      } else {
+        return 1
+      }
     }
   }
 }

@@ -2,6 +2,7 @@ import { createModule, mutation, action, getter } from 'vuex-class-component'
 import Matchday from '@/models/Matchday'
 import http from '@/utils/Http'
 import {
+  MATCHDAY_CHOOSE,
   MATCHDAY_GET_CURRENT,
   MATCHDAY_GET_SPECIFIC,
   MATCHDAY_FETCH_DATA_PENDING,
@@ -18,7 +19,12 @@ export class MatchdayStore extends VuexModule {
   matchday: Matchday | null = null
   matchdayIsLoading: boolean = true
   matchdayHasError: boolean = false
-  matchdayErrorMsg?: string;
+  matchdayErrorMsg?: string
+  selectedMatchday: number | null = null;
+
+  @mutation [MATCHDAY_CHOOSE](matchdayId: number) {
+    this.selectedMatchday = matchdayId
+  }
 
   @mutation [MATCHDAY_FETCH_DATA_PENDING](): void {
     this.matchdayIsLoading = true
@@ -70,5 +76,9 @@ export class MatchdayStore extends VuexModule {
 
   get errorMessage() {
     return this.matchdayErrorMsg
+  }
+
+  get selectedMatchdayId() {
+    return this.selectedMatchday
   }
 }

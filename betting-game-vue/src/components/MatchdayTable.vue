@@ -1,11 +1,11 @@
 <template>
-  <div class="matchday min-w-sm ">
+  <div class="matchday">
     <!-- MATCHDAY SKELETON TABLE, DISPLAYED WHILE MATCHDAY IS LOADING -->
     <div
       class="inline-block shadow-lg rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-900"
       v-if="matchdayIsLoading"
     >
-      <table class="leading-normal table-auto w-screen max-w-lg mx-auto bg-white">
+      <table class="leading-normal table-auto w-full md:max-w-lg mx-auto bg-white">
         <thead>
           <tr>
             <th
@@ -23,7 +23,7 @@
             :key="match"
             class="matchday__row cursor-pointer bg-white dark:bg-gray-900"
           >
-            <td class="matchday__col animate-pulse" colspan="2">
+            <td class="matchday__col animate-pulse" colspan="3">
               <div class="matchday__match flex flex-col md:flex-row">
                 <div class="matchday__team-home flex items-center w-48 md:w-64">
                   <div class="flex-shrink-0 w-10 h-10">
@@ -44,9 +44,9 @@
                 </div>
               </div>
             </td>
-            <td class="matchday__time-score matchday__col animate-pulse">
+            <td class="matchday__time-score matchday__col animate-pulse" colspan="1">
               <div class="flex-1 space-y-4 py-1">
-                <div class="h-4 bg-gray-400 dark:bg-gray-600 rounded w-14"></div>
+                <div class="h-4 bg-gray-400 dark:bg-gray-600 rounded w-16 md:w-14"></div>
               </div>
             </td>
           </tr>
@@ -108,7 +108,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import Matchday from '../models/Matchday'
 import MatchRow from '../components/MatchRow.vue'
 import { vxm } from '../store/store.vuex'
-import { MATCHDAY_GET_CURRENT } from '../store/actions'
+import { MATCHDAY_GET_CURRENT, MATCHDAY_GET_SPECIFIC } from '../store/actions'
 
 @Component({
   components: { MatchRow }
@@ -118,12 +118,13 @@ export default class MatchdayTable extends Vue {
 
   created() {
     this.$store.dispatch(MATCHDAY_GET_CURRENT)
-
-    //this.$store.dispatch('getSpecificMatchday', { year: 2020, matchday: 9 }) //date goes here
   }
 
   getMatchday() {
-    this.$store.dispatch(MATCHDAY_GET_CURRENT)
+    this.$store.dispatch(MATCHDAY_GET_SPECIFIC, {
+      year: 2020,
+      matchday: vxm.matchdayStore.selectedMatchdayId
+    })
   }
 
   get matchday(): Matchday | null {
@@ -137,6 +138,6 @@ export default class MatchdayTable extends Vue {
 
 <style scoped>
 .matchday__col {
-  @apply px-5 py-4 border-b-2 border-gray-200 dark:border-gray-800 text-sm;
+  @apply px-7 md:px-5 py-4 border-b-2 border-gray-200 dark:border-gray-800 text-sm;
 }
 </style>
