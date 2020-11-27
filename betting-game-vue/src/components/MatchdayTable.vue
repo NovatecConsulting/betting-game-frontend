@@ -1,7 +1,10 @@
 <template>
   <div class="matchday min-w-sm ">
     <!-- MATCHDAY SKELETON TABLE, DISPLAYED WHILE MATCHDAY IS LOADING -->
-    <div class="inline-block shadow-lg rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-900" v-if="!matchday">
+    <div
+      class="inline-block shadow-lg rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-900"
+      v-if="matchdayIsLoading"
+    >
       <table class="leading-normal table-auto w-screen max-w-lg mx-auto bg-white">
         <thead>
           <tr>
@@ -43,7 +46,7 @@
             </td>
             <td class="matchday__time-score matchday__col animate-pulse">
               <div class="flex-1 space-y-4 py-1">
-                <div class="h-4 bg-gray-400 dark:bg-gray-600 rounded w-16"></div>
+                <div class="h-4 bg-gray-400 dark:bg-gray-600 rounded w-14"></div>
               </div>
             </td>
           </tr>

@@ -56,7 +56,7 @@ export class MatchdayOverviewStore extends VuexModule {
     }
   }
 
-  get getMatchdayOverview() {
+  get getMatchdayOverview(): MatchdayOverview | null {
     return this.matchdayOverview
   }
 

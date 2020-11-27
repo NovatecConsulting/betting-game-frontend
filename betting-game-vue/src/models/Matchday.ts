@@ -5,5 +5,5 @@ export default interface Matchday {
   name: String
   firstMatchStartDateTime: string
   lastMatchStartDateTime: string
-  matches: Match[]
+  matches?: Match[]
 }

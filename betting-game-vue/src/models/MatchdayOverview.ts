@@ -1,6 +1,6 @@
 import Matchday from './Matchday'
 
 export default interface MatchdayOverview {
-  current: string
+  current: number
   matchDays: Matchday[]
 }

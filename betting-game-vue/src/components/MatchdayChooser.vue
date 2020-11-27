@@ -1,7 +1,13 @@
 <template>
-  <div class="max-w-3xl h-10 px-6 mx-0 sm:mx-3 bg-white dark:bg-gray-900 rounded-md">
-    <select class="mt-2 w-full dark:bg-gray-900 text-gray-700 dark:text-gray-300" v-if="matchdayOverView !== null">
-      <option v-for="opt of matchdayOverView.matchDays" :key="opt.id" :value="opt">{{ opt.name }}</option>
+  <div class="max-w-3xl h-10 px-6 mx-0 sm:mx-3 bg-white dark:bg-gray-900 rounded-md shadow-sm">
+    <select
+      class="mt-2 w-full dark:bg-gray-900 text-gray-700 dark:text-gray-300"
+      v-if="matchdayOverView !== null"
+      v-model="selectedMatchday"
+    >
+      <option v-for="matchday of matchdayOverView.matchDays" :key="matchday.id" :value="matchday.id">{{
+        matchday.name
+      }}</option>
     </select>
   </div>
 </template>
@@ -11,7 +17,8 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { vxm } from '../store/store.vuex'
 import MatchdayOverview from '../models/MatchdayOverview'
-import { OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON } from '../store/actions'
+import Matchday from '../models/Matchday'
+import { OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON, MATCHDAY_GET_SPECIFIC } from '../store/actions'
 
 @Component
 export default class MatchdayChooser extends Vue {
@@ -21,8 +28,21 @@ export default class MatchdayChooser extends Vue {
   mounted() {
     this.$store.dispatch(OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON)
   }
+
   get matchdayOverView(): MatchdayOverview | null {
     return this.matchdayOverviewStore.getMatchdayOverview
+  }
+
+  set selectedMatchday(matchdayId: number) {
+    this.$store.dispatch(MATCHDAY_GET_SPECIFIC, { year: 2020, matchday: matchdayId })
+  }
+
+  get selectedMatchday() {
+    if (this.matchdayOverviewStore.matchdayOverview) {
+      return this.matchdayOverviewStore.matchdayOverview.current
+    } else {
+      return 1
+    }
   }
 }
 </script>

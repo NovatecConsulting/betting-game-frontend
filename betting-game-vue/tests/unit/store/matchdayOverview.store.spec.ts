@@ -12,7 +12,7 @@ import {
 jest.mock('@/utils/Http')
 
 const sampleMatchdayOverview: MatchdayOverview = {
-  current: '3',
+  current: 3,
   matchDays: [
     {
       id: 123,
