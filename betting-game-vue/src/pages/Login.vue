@@ -39,6 +39,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { vxm } from '../store/store.vuex'
+import { USER_LOGIN } from '../store/actions'
 
 @Component
 export default class Login extends Vue {
@@ -47,7 +48,7 @@ export default class Login extends Vue {
   user = vxm.user
 
   async login() {
-    await this.user.login({
+    await this.user[USER_LOGIN]({
       username: this.username,
       password: this.password
     })

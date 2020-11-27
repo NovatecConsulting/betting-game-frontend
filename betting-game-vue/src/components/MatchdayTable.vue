@@ -105,6 +105,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import Matchday from '../models/Matchday'
 import MatchRow from '../components/MatchRow.vue'
 import { vxm } from '../store/store.vuex'
+import { MATCHDAY_GET_CURRENT } from '../store/actions'
 
 @Component({
   components: { MatchRow }
@@ -113,13 +114,13 @@ export default class MatchdayTable extends Vue {
   matchdayStore = vxm.matchdayStore
 
   created() {
-    //this.$store.dispatch('matchday/getCurrentMatchday')
+    this.$store.dispatch(MATCHDAY_GET_CURRENT)
 
-    this.$store.dispatch('getSpecificMatchday', { year: 2020, matchday: 9 }) //date goes here
+    //this.$store.dispatch('getSpecificMatchday', { year: 2020, matchday: 9 }) //date goes here
   }
 
   getMatchday() {
-    this.$store.dispatch('getCurrentMatchday')
+    this.$store.dispatch(MATCHDAY_GET_CURRENT)
   }
 
   get matchday(): Matchday | null {

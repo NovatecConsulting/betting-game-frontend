@@ -11,6 +11,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { vxm } from '../store/store.vuex'
 import MatchdayOverview from '../models/MatchdayOverview'
+import { OVERVIEW_GET_ALL_MATCHES } from '../store/actions'
 
 @Component
 export default class MatchdayChooser extends Vue {
@@ -18,7 +19,7 @@ export default class MatchdayChooser extends Vue {
   matchdayOverviewStore = vxm.matchdayOverviewStore
 
   mounted() {
-    this.$store.dispatch('getAllMatchesOfCurrentSeason', null, { root: true })
+    this.$store.dispatch(OVERVIEW_GET_ALL_MATCHES)
   }
   get matchdayOverView(): MatchdayOverview | null {
     return this.matchdayOverviewStore.getMatchdayOverview
