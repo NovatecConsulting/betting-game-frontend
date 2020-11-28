@@ -71,8 +71,4 @@ export class MatchdayStore extends VuexModule {
   get errorMessage() {
     return this.matchdayErrorMsg
   }
-
-  get selectedMatchdayId() {
-    return this.selectedMatchday
-  }
 }
