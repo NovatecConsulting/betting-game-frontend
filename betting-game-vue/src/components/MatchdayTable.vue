@@ -3,7 +3,7 @@
     <!-- MATCHDAY SKELETON TABLE, DISPLAYED WHILE MATCHDAY IS LOADING -->
     <div
       class="inline-block shadow-lg rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-900"
-      v-if="matchdayIsLoading"
+      v-if="matchdayIsLoading || !matchday"
     >
       <table class="leading-normal table-auto w-full md:max-w-lg mx-auto bg-white">
         <thead>
