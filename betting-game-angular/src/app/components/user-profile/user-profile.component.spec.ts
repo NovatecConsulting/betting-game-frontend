@@ -1,6 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserProfileComponent } from './user-profile.component';
+import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+import { MockAuthService} from '../../mock-service/MockAuthService'
+
+@Component({
+  selector: 'app-auth-button',
+  template: '<div></div>'
+})
+class FakeAuthButtonComponent {}
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
@@ -8,7 +17,8 @@ describe('UserProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UserProfileComponent]
+      declarations: [UserProfileComponent, FakeAuthButtonComponent],
+      providers: [{ provide: AuthService, useValue: MockAuthService }]
     }).compileComponents();
   });
 
