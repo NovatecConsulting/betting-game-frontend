@@ -7,8 +7,8 @@
       <td class="match__col" colspan="3" :class="{ 'border-none': index == 8 }">
         <div class="match__match flex flex-col md:flex-row truncate">
           <div class="match__team-home flex items-center w-48 md:w-64 ">
-            <div class="flex-shrink-0 w-10 h-10">
-              <img class="w-full h-full rounded-full" :src="match.home.logo" alt="" />
+            <div class="flex-shrink-0 w-16 h-10 flex items-center justify-center">
+              <img class="object-contain h-full" :src="match.home.logo" alt="" />
             </div>
             <div class="ml-3">
               <p class="whitespace-no-wrap">
@@ -18,8 +18,8 @@
           </div>
 
           <div class="match__team-guest flex items-center mt-2 md:mt-0 w-48 md:w-64">
-            <div class="flex-shrink-0 w-10 h-10">
-              <img class="w-full h-full rounded-full" :src="match.guest.logo" alt="" />
+            <div class="flex-shrink-0 w-16 h-10 flex items-center justify-center">
+              <img class="object-contain h-full" :src="match.guest.logo" alt="" />
             </div>
             <div class="ml-3">
               <p class="whitespace-no-wrap">
