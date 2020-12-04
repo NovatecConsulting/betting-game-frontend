@@ -1,23 +1,23 @@
 import { createModule, action, mutation } from 'vuex-class-component'
-
+import { USER_LOGIN, USER_LOGOUT, USER_SET } from '../actions'
 const VuexModule = createModule({
   strict: false
 })
 
 export class UserStore extends VuexModule {
-  private user: string = ''
+  private user: string = '';
 
-  @mutation setUser(value: string) {
+  @mutation [USER_SET](value: string) {
     this.user = value
   }
 
-  @action async login({ username }: any) {
+  @action async [USER_LOGIN]({ username }: any) {
     // @TODO jose service request here...
-    this.setUser(username)
+    this[USER_SET](username)
   }
 
-  @action async logout() {
-    this.setUser('')
+  @action async [USER_LOGOUT]() {
+    this[USER_SET]('')
   }
 
   get username() {

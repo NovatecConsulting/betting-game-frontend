@@ -1,5 +1,5 @@
 <template>
-  <span class="pl-2 whitespace-nowrap text-white">
+  <div>
     <svg
       class="accent-color-gradients"
       xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +16,13 @@
         </linearGradient>
       </defs>
     </svg>
-    <svg class="relative inline-block" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 300 300">
+    <svg
+      class="relative inline-block"
+      xmlns="http://www.w3.org/2000/svg"
+      width="128"
+      height="128"
+      viewBox="0 0 300 300"
+    >
       <path
         id="signet"
         d="M15.06,132.13C-4.9,326.06,62.33,213.91,134,92.59,218.67-50.73,279.32-6.24,291.77,250.73,300.73,435.32,41.23-122,15.06,132.13Z"
@@ -27,26 +33,35 @@
         stroke-width="22"
       ></path>
     </svg>
-    <span
-      class="h-4 w-4 overflow-hidden text-xl bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-blue-400"
-    >
-      NovaTipp
-    </span>
-  </span>
+  </div>
 </template>
-
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-
-@Component
-export default class Logo extends Vue {}
+@Component({})
+export default class Loading extends Vue {}
 </script>
-
 <style scoped>
-.stop-0 {
-  stop-color: #36bcee;
+#signet {
+  will-change: stroke-dasharray;
+  stroke-dasharray: 0 1130.725;
+  stroke-dashoffset: 0;
+  -webkit-animation: dash 2s ease infinite;
+  animation: dash 2s ease infinite;
 }
+@keyframes dash {
+  0% {
+    stroke-dasharray: 0 1130.725;
+  }
+  100% {
+    stroke-dasharray: 1130.725 1130.725;
+    opacity: 1;
+  }
+}
+.stop-0 {
+  stop-color: #e9454e;
+}
+
 .stop-1 {
-  stop-color: #1faf98;
+  stop-color: #5b4897;
 }
 </style>

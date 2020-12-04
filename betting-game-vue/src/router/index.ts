@@ -10,10 +10,7 @@ export const routes = [
   {
     path: '/',
     name: 'Homepage',
-    component: Homepage,
-    meta: {
-      requiresAuth: true
-    }
+    component: Homepage
   },
   {
     path: '/about',

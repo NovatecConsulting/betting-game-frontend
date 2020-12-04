@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="light">
+  <div id="app">
     <Navbar @logout="logout" />
     <router-view />
   </div>
@@ -9,6 +9,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { vxm } from './store/store.vuex'
 import Navbar from './components/Navbar.vue'
+import { USER_LOGOUT } from './store/actions'
 
 @Component({
   components: {
@@ -19,7 +20,7 @@ export default class App extends Vue {
   user = vxm.user
 
   async logout() {
-    await this.user.logout()
+    await this.user[USER_LOGOUT]()
     this.$router.push('login')
   }
 }

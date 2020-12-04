@@ -1,50 +1,73 @@
 import { createModule, mutation, action, getter } from 'vuex-class-component'
 import MatchdayOverview from '@/models/MatchdayOverview'
 import http from '@/utils/Http'
+import {
+  OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON,
+  OVERVIEW_GET_ALL_MATCHES_SPECIFIC_SEASON,
+  OVERVIEW_FETCH_DATA_PENDING,
+  OVERVIEW_FETCH_DATA_ERROR,
+  OVERVIEW_FETCH_DATA_SUCCESS
+} from '../actions'
 
 const VuexModule = createModule({
   strict: false
 })
 
 export class MatchdayOverviewStore extends VuexModule {
-  @getter matchdayOverview?: MatchdayOverview
-  @getter matchdayOverviewIsLoading: boolean = true
-  @getter matchdayOverviewHasError: boolean = false
-  @getter matchdayOverviewErrorMsg?: string
+  matchdayOverview: MatchdayOverview | null = null
+  matchdayOverviewIsLoading: boolean = true
+  matchdayOverviewHasError: boolean = false
+  matchdayOverviewErrorMsg?: string;
 
-  @mutation fetchDataPending(): void {
+  @mutation [OVERVIEW_FETCH_DATA_PENDING](): void {
     this.matchdayOverviewIsLoading = true
     this.matchdayOverviewHasError = false
   }
 
-  @mutation fetchDataSuccess(payload: MatchdayOverview): void {
+  @mutation [OVERVIEW_FETCH_DATA_SUCCESS](payload: MatchdayOverview): void {
     this.matchdayOverviewIsLoading = false
     this.matchdayOverviewHasError = false
     this.matchdayOverview = payload
   }
-  @mutation fetchDataError(payload: string): void {
+  @mutation [OVERVIEW_FETCH_DATA_ERROR](payload: string): void {
     this.matchdayOverviewIsLoading = false
     this.matchdayOverviewHasError = true
     this.matchdayOverviewErrorMsg = payload
   }
 
-  @action async getAllMatchesOfCurrentSeason() {
-    this.fetchDataPending()
+  @action async [OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON]() {
+    this[OVERVIEW_FETCH_DATA_PENDING]()
     try {
       const response = await http.get('/matchdays/current-season')
-      this.fetchDataSuccess(response.data)
+      this[OVERVIEW_FETCH_DATA_SUCCESS](response.data)
     } catch (error) {
-      this.fetchDataError(error.message)
+      this[OVERVIEW_FETCH_DATA_ERROR](error.message)
     }
   }
 
-  @action async getAllMatchesOfSeason(season: string) {
-    this.fetchDataPending()
+  @action async [OVERVIEW_GET_ALL_MATCHES_SPECIFIC_SEASON](season: string) {
+    this[OVERVIEW_FETCH_DATA_PENDING]()
     try {
       const response = await http.get(`/matchdays/${season}`)
-      this.fetchDataSuccess(response.data)
+      this[OVERVIEW_FETCH_DATA_SUCCESS](response.data)
     } catch (error) {
-      this.fetchDataError(error.message)
+      this[OVERVIEW_FETCH_DATA_ERROR](error.message)
     }
+  }
+
+  get getMatchdayOverview(): MatchdayOverview | null {
+    return this.matchdayOverview
+  }
+
+  get getMatchdayOverviewisLoading() {
+    return this.matchdayOverviewIsLoading
+  }
+
+  get getMatchdayOverviewHasError() {
+    return this.matchdayOverviewHasError
+  }
+
+  get getMatchdayOverviewErrorMessage() {
+    return this.matchdayOverviewErrorMsg
   }
 }

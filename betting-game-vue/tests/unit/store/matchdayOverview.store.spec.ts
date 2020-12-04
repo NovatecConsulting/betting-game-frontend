@@ -1,11 +1,18 @@
 import { MatchdayOverviewStore } from '@/store/modules/matchdayOverview.store'
 import http from '@/utils/Http'
 import MatchdayOverview from '@/models/MatchdayOverview'
+import {
+  OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON,
+  OVERVIEW_GET_ALL_MATCHES_SPECIFIC_SEASON,
+  OVERVIEW_FETCH_DATA_PENDING,
+  OVERVIEW_FETCH_DATA_ERROR,
+  OVERVIEW_FETCH_DATA_SUCCESS
+} from '@/store//actions'
 
 jest.mock('@/utils/Http')
 
 const sampleMatchdayOverview: MatchdayOverview = {
-  current: '3',
+  current: 3,
   matchDays: [
     {
       id: 123,
@@ -26,7 +33,7 @@ describe('Matchday.store', () => {
     it('should call fetchDataPending and change to matchdayOverviewIsLoading=true and matchdayOverviewHasError=false.', () => {
       const store = new MatchdayOverviewStore()
 
-      store.fetchDataPending()
+      store[OVERVIEW_FETCH_DATA_PENDING]()
 
       expect(store.matchdayOverview).toBeUndefined()
       expect(store.matchdayOverviewIsLoading).toBeTruthy()
@@ -37,7 +44,7 @@ describe('Matchday.store', () => {
     it('should call fetchDataSuccess and change to matchdayOverviewIsLoading=false and matchdayOverviewHasError=false and sampleMatchday.', () => {
       const store = new MatchdayOverviewStore()
 
-      store.fetchDataSuccess(sampleMatchdayOverview)
+      store[OVERVIEW_FETCH_DATA_SUCCESS](sampleMatchdayOverview)
 
       expect(store.matchdayOverview).toEqual(sampleMatchdayOverview)
       expect(store.matchdayOverviewIsLoading).toBeFalsy()
@@ -48,7 +55,7 @@ describe('Matchday.store', () => {
     it('should call fetchDataError and change to matchdayOverviewIsLoading=false and matchdayOverviewHasError=true and error message.', () => {
       const store = new MatchdayOverviewStore()
 
-      store.fetchDataError('error')
+      store[OVERVIEW_FETCH_DATA_ERROR]('error')
 
       expect(store.matchdayOverview).toBeUndefined()
       expect(store.matchdayOverviewIsLoading).toBeFalsy()
@@ -65,7 +72,7 @@ describe('Matchday.store', () => {
           data: sampleMatchdayOverview
         })
 
-        await store.getAllMatchesOfCurrentSeason()
+        await store[OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON]()
 
         expect(store.matchdayOverview).toEqual(sampleMatchdayOverview)
         expect(store.matchdayOverviewIsLoading).toBeFalsy()
@@ -77,7 +84,7 @@ describe('Matchday.store', () => {
         const store = new MatchdayOverviewStore()
         ;(http.get as jest.Mock).mockRejectedValue(new Error('error'))
 
-        await store.getAllMatchesOfCurrentSeason()
+        await store[OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON]()
 
         expect(store.matchdayOverview).toBeUndefined()
         expect(store.matchdayOverviewIsLoading).toBeFalsy()
@@ -94,7 +101,7 @@ describe('Matchday.store', () => {
           data: sampleMatchdayOverview
         })
 
-        await store.getAllMatchesOfSeason('2020')
+        await store[OVERVIEW_GET_ALL_MATCHES_SPECIFIC_SEASON]('2020')
 
         expect(store.matchdayOverview).toEqual(sampleMatchdayOverview)
         expect(store.matchdayOverviewIsLoading).toBeFalsy()
@@ -106,7 +113,7 @@ describe('Matchday.store', () => {
         const store = new MatchdayOverviewStore()
         ;(http.get as jest.Mock).mockRejectedValue(new Error('error'))
 
-        await store.getAllMatchesOfSeason('2020')
+        await store[OVERVIEW_GET_ALL_MATCHES_SPECIFIC_SEASON]('2020')
 
         expect(store.matchdayOverview).toBeUndefined()
         expect(store.matchdayOverviewIsLoading).toBeFalsy()
