@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserProfileComponent } from './user-profile.component';
 import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { MockAuthService} from '../../mock-service/MockAuthService'
+import { MockAuthService } from '../../mock-service/MockAuthService';
 
 @Component({
   selector: 'app-auth-button',

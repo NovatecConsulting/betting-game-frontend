@@ -10,7 +10,7 @@ describe('AuthButtonComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AuthButtonComponent],
-      providers: [{ provide: AuthService, useValue: MockAuthService}]
+      providers: [{ provide: AuthService, useValue: MockAuthService }]
     }).compileComponents();
   });
 
