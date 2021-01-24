@@ -1,6 +1,7 @@
 import { createModule, action, mutation } from 'vuex-class-component'
 import { USER_LOGIN, USER_LOGOUT, USER_SET } from '../actions'
 const VuexModule = createModule({
+  namespaced: 'user',
   strict: false
 })
 

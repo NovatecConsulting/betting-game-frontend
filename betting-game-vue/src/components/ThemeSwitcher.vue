@@ -24,7 +24,7 @@ export default class ThemeSwitcher extends Vue {
   }
 
   set theme(value: string) {
-    this.$store.commit(THEME_CHANGE_THEME, value)
+    this.$store.commit(`theme/${THEME_CHANGE_THEME}`, value)
   }
 }
 </script>

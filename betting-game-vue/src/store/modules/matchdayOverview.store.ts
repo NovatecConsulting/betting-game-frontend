@@ -10,6 +10,7 @@ import {
 } from '../actions'
 
 const VuexModule = createModule({
+  namespaced: 'matchdayOverview',
   strict: false
 })
 

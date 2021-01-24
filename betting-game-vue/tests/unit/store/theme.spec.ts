@@ -5,7 +5,7 @@ describe('Theme.store', () => {
   const store = new ThemeStore()
 
   it('theme store should initialize with light theme', () => {
-    expect(store).toBeDefined()
+    expect(store).toBeTruthy()
     expect(store.theme).toMatch('light')
   })
 
@@ -13,7 +13,7 @@ describe('Theme.store', () => {
     const dom = document.querySelector('html')
     store[THEME_CHANGE_THEME]('dark')
     expect(store.theme).toMatch('dark')
-    expect(dom).toBeDefined()
+    expect(dom).toBeTruthy()
     expect(dom?.classList).toContain('dark')
   })
 })

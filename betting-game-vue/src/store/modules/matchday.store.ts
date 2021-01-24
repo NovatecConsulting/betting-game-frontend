@@ -11,6 +11,7 @@ import {
 type MatchdayProps = { year: string; matchday: string }
 
 const VuexModule = createModule({
+  namespaced: 'matchday',
   strict: false
 })
 

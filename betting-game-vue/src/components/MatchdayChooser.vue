@@ -25,7 +25,7 @@ export default class MatchdayChooser extends Vue {
   matchdayOverviewStore = vxm.matchdayOverviewStore
 
   mounted() {
-    this.$store.dispatch(OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON)
+    this.$store.dispatch(`matchdayOverview/${OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON}`)
   }
 
   get matchdayOverview(): MatchdayOverview | null {
@@ -33,7 +33,7 @@ export default class MatchdayChooser extends Vue {
   }
 
   set selectedMatchday(matchdayId: number) {
-    this.$store.dispatch(MATCHDAY_GET_SPECIFIC, { year: 2020, matchday: matchdayId })
+    this.$store.dispatch(`matchday/${MATCHDAY_GET_SPECIFIC}`, { year: 2020, matchday: matchdayId })
   }
 
   get selectedMatchday() {
