@@ -35,7 +35,7 @@ describe('Matchday.store', () => {
 
       store[OVERVIEW_FETCH_DATA_PENDING]()
 
-      expect(store.matchdayOverview).toBeUndefined()
+      expect(store.matchdayOverview).toBeNull()
       expect(store.matchdayOverviewIsLoading).toBeTruthy()
       expect(store.matchdayOverviewHasError).toBeFalsy()
       expect(store.matchdayOverviewErrorMsg).toBeUndefined()
@@ -57,7 +57,7 @@ describe('Matchday.store', () => {
 
       store[OVERVIEW_FETCH_DATA_ERROR]('error')
 
-      expect(store.matchdayOverview).toBeUndefined()
+      expect(store.matchdayOverview).toBeNull()
       expect(store.matchdayOverviewIsLoading).toBeFalsy()
       expect(store.matchdayOverviewHasError).toBeTruthy()
       expect(store.matchdayOverviewErrorMsg).toEqual('error')
@@ -86,7 +86,7 @@ describe('Matchday.store', () => {
 
         await store[OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON]()
 
-        expect(store.matchdayOverview).toBeUndefined()
+        expect(store.matchdayOverview).toBeNull()
         expect(store.matchdayOverviewIsLoading).toBeFalsy()
         expect(store.matchdayOverviewHasError).toBeTruthy()
         expect(store.matchdayOverviewErrorMsg).toEqual('error')
@@ -115,7 +115,7 @@ describe('Matchday.store', () => {
 
         await store[OVERVIEW_GET_ALL_MATCHES_SPECIFIC_SEASON]('2020')
 
-        expect(store.matchdayOverview).toBeUndefined()
+        expect(store.matchdayOverview).toBeNull()
         expect(store.matchdayOverviewIsLoading).toBeFalsy()
         expect(store.matchdayOverviewHasError).toBeTruthy()
         expect(store.matchdayOverviewErrorMsg).toEqual('error')

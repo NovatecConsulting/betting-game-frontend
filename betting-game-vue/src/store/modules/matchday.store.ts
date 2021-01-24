@@ -55,20 +55,4 @@ export class MatchdayStore extends VuexModule {
       this[MATCHDAY_FETCH_DATA_ERROR](error.message)
     }
   }
-
-  get getMatchday() {
-    return this.matchday
-  }
-
-  get isLoading() {
-    return this.matchdayIsLoading
-  }
-
-  get hasError() {
-    return this.matchdayHasError
-  }
-
-  get errorMessage() {
-    return this.matchdayErrorMsg
-  }
 }

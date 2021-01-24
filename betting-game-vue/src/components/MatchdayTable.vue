@@ -121,19 +121,19 @@ export default class MatchdayTable extends Vue {
   }
 
   getMatchday() {
-    if (vxm.matchdayStore.getMatchday) {
+    if (vxm.matchdayStore.matchday) {
       this.$store.dispatch(MATCHDAY_GET_SPECIFIC, {
         year: 2020,
-        matchday: vxm.matchdayStore.getMatchday.id
+        matchday: vxm.matchdayStore.matchday.id
       })
     }
   }
 
   get matchday(): Matchday | null {
-    return this.matchdayStore.getMatchday
+    return this.matchdayStore.matchday
   }
   get matchdayIsLoading(): boolean {
-    return this.matchdayStore.isLoading
+    return this.matchdayStore.matchdayIsLoading
   }
 }
 </script>

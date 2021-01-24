@@ -19,10 +19,8 @@ import { THEME_CHANGE_THEME } from '../store/actions'
 
 @Component
 export default class ThemeSwitcher extends Vue {
-  currentTheme = vxm.theme.currentTheme
-
   get theme() {
-    return this.currentTheme
+    return vxm.theme.theme
   }
 
   set theme(value: string) {

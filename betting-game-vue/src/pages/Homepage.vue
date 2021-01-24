@@ -30,7 +30,7 @@ import { vxm } from '@/store/store.vuex'
 @Component({ components: { MatchdayTable } })
 export default class Homepage extends Vue {
   get theme() {
-    return vxm.theme.currentTheme
+    return vxm.theme.theme
   }
 }
 </script>

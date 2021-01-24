@@ -29,8 +29,7 @@ describe('Matchday.store', () => {
       const store = new MatchdayStore()
 
       store[MATCHDAY_FETCH_DATA_PENDING]()
-
-      expect(store.matchday).toBeUndefined()
+      expect(store.matchday).toBeNull()
       expect(store.matchdayIsLoading).toBeTruthy()
       expect(store.matchdayHasError).toBeFalsy()
       expect(store.matchdayErrorMsg).toBeUndefined()
@@ -52,7 +51,7 @@ describe('Matchday.store', () => {
 
       store[MATCHDAY_FETCH_DATA_ERROR]('error')
 
-      expect(store.matchday).toBeUndefined()
+      expect(store.matchday).toBeNull()
       expect(store.matchdayIsLoading).toBeFalsy()
       expect(store.matchdayHasError).toBeTruthy()
       expect(store.matchdayErrorMsg).toEqual('error')
@@ -81,7 +80,7 @@ describe('Matchday.store', () => {
 
         await store[MATCHDAY_GET_CURRENT]()
 
-        expect(store.matchday).toBeUndefined()
+        expect(store.matchday).toBeNull()
         expect(store.matchdayIsLoading).toBeFalsy()
         expect(store.matchdayHasError).toBeTruthy()
         expect(store.matchdayErrorMsg).toEqual('error')
@@ -110,7 +109,7 @@ describe('Matchday.store', () => {
 
         await store[MATCHDAY_GET_SPECIFIC]({ year: '2020', matchday: '1' })
 
-        expect(store.matchday).toBeUndefined()
+        expect(store.matchday).toBeNull()
         expect(store.matchdayIsLoading).toBeFalsy()
         expect(store.matchdayHasError).toBeTruthy()
         expect(store.matchdayErrorMsg).toEqual('error')

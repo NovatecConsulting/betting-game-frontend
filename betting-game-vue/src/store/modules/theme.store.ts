@@ -5,9 +5,7 @@ const VuexModule = createModule({
 })
 
 export class ThemeStore extends VuexModule {
-  theme = 'light'
-  private lightTheme = 'light'
-  private darkTheme = 'dark';
+  theme = 'light';
 
   @mutation [THEME_CHANGE_THEME](value: string) {
     this.theme = value
@@ -15,8 +13,5 @@ export class ThemeStore extends VuexModule {
     if (app) {
       app.className = value
     }
-  }
-  get currentTheme() {
-    return this.theme
   }
 }

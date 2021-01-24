@@ -2,10 +2,10 @@
   <div class="max-w-3xl h-10 px-6 mx-0 sm:mx-3 bg-white dark:bg-gray-900 rounded-md shadow-sm">
     <select
       class="mt-2 w-full dark:bg-gray-900 text-gray-700 dark:text-gray-300"
-      v-if="matchdayOverView !== null"
+      v-if="matchdayOverview !== null"
       v-model="selectedMatchday"
     >
-      <option v-for="matchday of matchdayOverView.matchDays" :key="matchday.id" :value="matchday.id">{{
+      <option v-for="matchday of matchdayOverview.matchDays" :key="matchday.id" :value="matchday.id">{{
         matchday.name
       }}</option>
     </select>
@@ -17,7 +17,6 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { vxm } from '../store/store.vuex'
 import MatchdayOverview from '../models/MatchdayOverview'
-import Matchday from '../models/Matchday'
 import { OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON, MATCHDAY_GET_SPECIFIC } from '../store/actions'
 
 @Component
@@ -29,8 +28,8 @@ export default class MatchdayChooser extends Vue {
     this.$store.dispatch(OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON)
   }
 
-  get matchdayOverView(): MatchdayOverview | null {
-    return this.matchdayOverviewStore.getMatchdayOverview
+  get matchdayOverview(): MatchdayOverview | null {
+    return this.matchdayOverviewStore.matchdayOverview
   }
 
   set selectedMatchday(matchdayId: number) {
@@ -38,11 +37,11 @@ export default class MatchdayChooser extends Vue {
   }
 
   get selectedMatchday() {
-    if (vxm.matchdayStore.getMatchday) {
-      return vxm.matchdayStore.getMatchday.id
+    if (vxm.matchdayStore.matchday) {
+      return vxm.matchdayStore.matchday.id
     } else {
-      if (this.matchdayOverviewStore.matchdayOverview) {
-        return this.matchdayOverviewStore.matchdayOverview.current
+      if (this.matchdayOverview) {
+        return this.matchdayOverview.current
       } else {
         return 1
       }

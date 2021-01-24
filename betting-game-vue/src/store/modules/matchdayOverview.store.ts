@@ -54,20 +54,4 @@ export class MatchdayOverviewStore extends VuexModule {
       this[OVERVIEW_FETCH_DATA_ERROR](error.message)
     }
   }
-
-  get getMatchdayOverview(): MatchdayOverview | null {
-    return this.matchdayOverview
-  }
-
-  get getMatchdayOverviewisLoading() {
-    return this.matchdayOverviewIsLoading
-  }
-
-  get getMatchdayOverviewHasError() {
-    return this.matchdayOverviewHasError
-  }
-
-  get getMatchdayOverviewErrorMessage() {
-    return this.matchdayOverviewErrorMsg
-  }
 }

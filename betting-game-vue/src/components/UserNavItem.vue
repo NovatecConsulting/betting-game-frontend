@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="navbar-link-wrapper ml-4">
-      <span class="text-xl text-blue-100">User: {{ user.username }}</span>
+      <span class="text-xl text-blue-100">User: {{ user.user }}</span>
       <a
         href="#"
         @click.prevent="$emit('logout')"
