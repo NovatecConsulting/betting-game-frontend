@@ -14,9 +14,10 @@ import { MatchdayState } from './state/matchday-state';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AuthModule } from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, MatchdayComponent, NavigationComponent, TableComponent],
+  declarations: [AppComponent, HomepageComponent, MatchdayComponent, NavigationComponent, TableComponent,AuthButtonComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -27,8 +28,8 @@ import { AuthModule } from '@auth0/auth0-angular';
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     AuthModule.forRoot({
-      domain: 'YOUR_DOMAIN',
-      clientId: 'YOUR_CLIENT_ID'
+      domain: 'betting-game.eu.auth0.com',
+      clientId: 'rqlyAphr2es3RUjYlPAEkf2VCldAR5wL'
     }),
   ],
   providers: [],
