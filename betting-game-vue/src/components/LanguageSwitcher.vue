@@ -18,6 +18,7 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class LanguageSwitcher extends Vue {
+  // TODO: store setting in localstorage and load it (if exists) in when app is opened
   setLocale(locale: string) {
     this.$i18n.locale = locale
   }
