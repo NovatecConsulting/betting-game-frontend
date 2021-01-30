@@ -5,9 +5,9 @@
       v-if="matchdayOverview !== null"
       v-model="selectedMatchday"
     >
-      <option v-for="matchday of matchdayOverview.matchDays" :key="matchday.id" :value="matchday.id">{{
-        matchday.name
-      }}</option>
+      <option v-for="matchday of matchdayOverview.matchDays" :key="matchday.id" :value="matchday.id">
+        {{ matchday.name }}
+      </option>
     </select>
   </div>
 </template>
@@ -21,7 +21,6 @@ import { OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON, MATCHDAY_GET_SPECIFIC } from '
 
 @Component
 export default class MatchdayChooser extends Vue {
-  options = [0, 1, 2, 3, 4, 5, 6, 7, 8]
   matchdayOverviewStore = vxm.matchdayOverviewStore
 
   mounted() {

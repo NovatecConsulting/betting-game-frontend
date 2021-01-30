@@ -1,10 +1,7 @@
 import { shallowMount, createLocalVue, mount } from '@vue/test-utils'
 import MatchdayTable from '@/components/MatchdayTable.vue'
 import Vuex from 'vuex'
-import { MatchdayStore } from '@/store/modules/matchday.store'
 import { MATCHDAY_GET_CURRENT, MATCHDAY_GET_SPECIFIC } from '@/store/actions'
-import { extractVuexModule } from 'vuex-class-component'
-import { store, vxm } from '@/store/store.vuex'
 import Matchday from '@/models/Matchday'
 import { dateTime } from '@/filters/DateTime'
 
@@ -13,20 +10,21 @@ localVue.use(Vuex)
 localVue.filter('dateTime', dateTime)
 
 describe('MatchdayTable Component', () => {
-  // let store: any
   const store = new Vuex.Store({})
   store.dispatch = jest.fn()
+
   const mockMatchday: Matchday = {
     id: 0,
     name: 'String',
     firstMatchStartDateTime: '2021-01-31T18:00+01:00[Europe/Berlin]',
     lastMatchStartDateTime: '2021-01-31T18:00+01:00[Europe/Berlin]'
   }
+
   const mockStore = {
     matchday: mockMatchday
   }
 
-  const loadingWrapper = mount(MatchdayTable, {
+  const loadingWrapper = shallowMount(MatchdayTable, {
     store,
     localVue,
     computed: {
@@ -62,7 +60,7 @@ describe('MatchdayTable Component', () => {
     loadingWrapper.destroy()
   })
 
-  it('component should init', () => {
+  it('should init component', () => {
     expect(loadingWrapper.vm).toBeTruthy()
   })
 
@@ -83,7 +81,6 @@ describe('MatchdayTable Component', () => {
   it('should dispatch get specific matchday action when refresh button is pressed', async () => {
     const refreshButton = loadedWrapper.find('#refresh-button')
     await refreshButton.trigger('click')
-
     expect(store.dispatch).toHaveBeenCalledWith(`matchday/${MATCHDAY_GET_SPECIFIC}`, {
       year: 2020,
       matchday: mockStore.matchday.id
