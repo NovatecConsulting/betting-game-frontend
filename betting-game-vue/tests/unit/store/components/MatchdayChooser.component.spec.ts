@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue, mount } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import MatchdayChooser from '@/components/MatchdayChooser.vue'
 import Vuex from 'vuex'
 import { MATCHDAY_GET_SPECIFIC, OVERVIEW_GET_ALL_MATCHES_CURRENT_SEASON } from '@/store/actions'
@@ -43,6 +43,10 @@ describe('MatchdayChooser', () => {
       }
     },
     computed: {}
+  })
+
+  afterAll(() => {
+    wrapper.destroy()
   })
 
   it('should init component', () => {

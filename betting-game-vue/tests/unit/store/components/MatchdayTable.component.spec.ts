@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue, mount } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import MatchdayTable from '@/components/MatchdayTable.vue'
 import Vuex from 'vuex'
 import { MATCHDAY_GET_CURRENT, MATCHDAY_GET_SPECIFIC } from '@/store/actions'

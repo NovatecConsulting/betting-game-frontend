@@ -49,7 +49,7 @@
     <transition name="fade" mode="in-out">
       <tr class="h-16 bg-gray-100 text-gray-800 text-sm" v-if="displayBetting">
         <th colspan="4" v-if="displayBettingContent" class="match__bet">
-          <MatchBet />
+          <MatchBet id="matchbet" />
         </th>
       </tr>
     </transition>
