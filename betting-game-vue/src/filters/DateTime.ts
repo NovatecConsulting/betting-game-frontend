@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-Vue.filter('dateTime', function(zonedDateTimeString: string) {
+export const dateTime = Vue.filter('dateTime', function(zonedDateTimeString: string) {
   if (!zonedDateTimeString) {
     return ''
   }
