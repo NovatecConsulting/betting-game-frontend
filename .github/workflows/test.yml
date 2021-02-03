@@ -1,6 +1,6 @@
 name: Node.js CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -43,3 +43,16 @@ jobs:
       - name: Run Vue tests
         working-directory: ./betting-game-vue
         run: yarn test:unit
+
+      # React project
+      - name: Install React dependencies
+        working-directory: ./betting-game-react
+        run: yarn install
+
+      - name: Lint React source files
+        working-directory: ./betting-game-react
+        run: yarn lint
+
+      - name: Run React tests
+        working-directory: ./betting-game-react
+        run: yarn test
