@@ -1,14 +1,12 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
-import Matchday from "./Matchday";
+import { shallow } from "enzyme";
+import { Matchday } from ".";
 
-describe("Component that displays the match days", () => {
-    test("it should mount", () => {
-        render(<Matchday />);
+describe(Matchday.name + " component", () => {
+    it("should render and match snapshot with correct content text.", () => {
+        const wrapper = shallow(<Matchday />);
 
-        const matchday = screen.getByTestId("Matchday");
-
-        expect(matchday).toBeInTheDocument();
+        expect(wrapper.find("div")).toIncludeText("Matchday Component");
+        expect(wrapper).toMatchSnapshot();
     });
 });

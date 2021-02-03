@@ -1,11 +1,13 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { shallow } from "enzyme";
+import { Navbar } from "./components/Navbar";
 import App from "./App";
 
-test("renders complete NOVATIPP application", () => {
-    const { getByTestId } = render(<App />);
+describe(App.name + " component", () => {
+    it("should render and match snapshot.", () => {
+        const wrapper = shallow(<App />);
 
-    const navbar = getByTestId("Navbar");
-
-    expect(navbar).toBeInTheDocument();
+        expect(wrapper.find(Navbar)).toExist();
+        expect(wrapper).toMatchSnapshot();
+    });
 });

@@ -1,14 +1,12 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
-import Matches from "./Matches";
+import { shallow } from "enzyme";
+import { Matches } from ".";
 
-describe("Component that displays the games", () => {
-    test("it should mount", () => {
-        render(<Matches />);
+describe(Matches.name + " component", () => {
+    it("should render and match snapshot with correct content text.", () => {
+        const wrapper = shallow(<Matches />);
 
-        const matches = screen.getByTestId("Matches");
-
-        expect(matches).toBeInTheDocument();
+        expect(wrapper.find("div")).toIncludeText("Matches Component");
+        expect(wrapper).toMatchSnapshot();
     });
 });

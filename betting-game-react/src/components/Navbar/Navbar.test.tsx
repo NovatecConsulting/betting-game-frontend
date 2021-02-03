@@ -1,113 +1,76 @@
-import "@testing-library/jest-dom/extend-expect";
-
-import { createMemoryHistory } from "history";
 import React from "react";
-import { MemoryRouter, Router } from "react-router-dom";
-
+import { shallow } from "enzyme";
 import { fireEvent, render } from "@testing-library/react";
+import { MemoryRouter, Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
+import { ABOUTUS, LOGIN, MATCHES, STANDINGS } from "../../routes";
+import { Navbar } from ".";
+import { NavbarLogo } from "../NavbarLogo";
+import { NavbarButton } from "../NavbarButton";
+import { NavbarLoginButton } from "../NavbarLoginButton";
 
-import { ABOUTUS, LOGIN, MATCHES, STANDINGS } from "../../config/routes";
-import Navbar from "./Navbar";
+describe(Navbar.name + " component", () => {
+    it("should render and match snapshot with correct navbar items.", () => {
+        const wrapper = shallow(<Navbar />);
 
-describe("Navigation bar for users", () => {
-    test("It should render the logo in the navbar", () => {
-        const { getByTestId } = render(
-            <MemoryRouter>
-                <Navbar />
-            </MemoryRouter>
+        expect(wrapper.find(NavbarLogo)).toExist();
+        expect(wrapper.find(NavbarButton)).toHaveLength(3);
+        expect(wrapper.find(NavbarButton).at(0).prop("buttonText")).toEqual(
+            "Matches"
         );
-
-        const navbarLogo = getByTestId("NavbarLogo");
-
-        expect(navbarLogo).toBeInTheDocument();
-    });
-
-    test("It should render the login button in the navbar", () => {
-        const { getByTestId } = render(
-            <MemoryRouter>
-                <Navbar />
-            </MemoryRouter>
+        expect(wrapper.find(NavbarButton).at(0).prop("buttonURL")).toEqual(
+            "/matches"
         );
-
-        const loginButton = getByTestId("Login-NavButton");
-
-        expect(loginButton).toBeInTheDocument();
-    });
-
-    test("it should render matches button", () => {
-        const { getByTestId } = render(
-            <MemoryRouter>
-                <Navbar />
-            </MemoryRouter>
+        expect(wrapper.find(NavbarButton).at(1).prop("buttonText")).toEqual(
+            "Standings"
         );
-
-        const matchesButton = getByTestId("Matches-NavButton");
-
-        expect(matchesButton).toBeInTheDocument();
-    });
-
-    test("it should render standings button", () => {
-        const { getByTestId } = render(
-            <MemoryRouter>
-                <Navbar />
-            </MemoryRouter>
+        expect(wrapper.find(NavbarButton).at(1).prop("buttonURL")).toEqual(
+            "/standings"
         );
-
-        const standingsButton = getByTestId("Standings-NavButton");
-
-        expect(standingsButton).toBeInTheDocument();
-    });
-
-    test("it should render about us button", () => {
-        const { getByTestId } = render(
-            <MemoryRouter>
-                <Navbar />
-            </MemoryRouter>
+        expect(wrapper.find(NavbarButton).at(2).prop("buttonText")).toEqual(
+            "About us"
         );
-
-        const aboutUsButton = getByTestId("AboutUs-NavButton");
-
-        expect(aboutUsButton).toBeInTheDocument();
+        expect(wrapper.find(NavbarButton).at(2).prop("buttonURL")).toEqual(
+            "/aboutus"
+        );
+        expect(wrapper.find(NavbarLoginButton)).toExist();
+        expect(wrapper).toMatchSnapshot();
     });
 
     test('it should route when the "Matches" button was clicked', () => {
         const { getByTestId } = render(<Navbar />, { wrapper: MemoryRouter });
-
         const matchesButton = getByTestId(`Matches-NavButton`);
-        fireEvent.click(matchesButton);
-        const loadedComponent = getByTestId("Matches");
 
-        expect(loadedComponent).toBeInTheDocument();
+        fireEvent.click(matchesButton);
+
+        expect(getByTestId("Matches")).toBeInTheDocument();
     });
 
     test('it should route when the "Standings" button was clicked', () => {
         const { getByTestId } = render(<Navbar />, { wrapper: MemoryRouter });
-
         const matchesButton = getByTestId(`Standings-NavButton`);
-        fireEvent.click(matchesButton);
-        const loadedComponent = getByTestId("Standings");
 
-        expect(loadedComponent).toBeInTheDocument();
+        fireEvent.click(matchesButton);
+
+        expect(getByTestId("Standings")).toBeInTheDocument();
     });
 
     test('it should route when the "About us" button was clicked', () => {
         const { getByTestId } = render(<Navbar />, { wrapper: MemoryRouter });
-
         const matchesButton = getByTestId(`AboutUs-NavButton`);
-        fireEvent.click(matchesButton);
-        const loadedComponent = getByTestId("AboutUs");
 
-        expect(loadedComponent).toBeInTheDocument();
+        fireEvent.click(matchesButton);
+
+        expect(getByTestId("AboutUs")).toBeInTheDocument();
     });
 
     test('it should route when the "Login" button was clicked', () => {
         const { getByTestId } = render(<Navbar />, { wrapper: MemoryRouter });
-
         const matchesButton = getByTestId(`Login-NavButton`);
-        fireEvent.click(matchesButton);
-        const loadedComponent = getByTestId("Login");
 
-        expect(loadedComponent).toBeInTheDocument();
+        fireEvent.click(matchesButton);
+
+        expect(getByTestId("Login")).toBeInTheDocument();
     });
 
     test("it should redirect to matches if the path does not exist", () => {

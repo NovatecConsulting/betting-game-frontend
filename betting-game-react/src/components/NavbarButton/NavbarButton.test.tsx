@@ -1,37 +1,20 @@
-import "@testing-library/jest-dom/extend-expect";
-
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { shallow } from "enzyme";
+import { NavLink } from "react-router-dom";
+import { NavbarButton } from ".";
 
-import { render } from "@testing-library/react";
-import NavbarButton, { NavbarButtonProps } from "./NavbarButton";
-
-describe("Navigation bar button for users", () => {
-    const navbarButtonMock: NavbarButtonProps = {
-        buttonURL: "/testButtonURL",
-        buttonText: "TestButtonText",
-        buttonTestIdPrefix: "TestButton",
-    };
-
-    test("it should render a non-empty navbar button with text", () => {
-        const { getByTestId } = render(
-            <Router>
-                <NavbarButton
-                    buttonText={navbarButtonMock.buttonText}
-                    buttonURL={navbarButtonMock.buttonURL}
-                    buttonTestIdPrefix={navbarButtonMock.buttonTestIdPrefix}
-                />
-            </Router>
+describe(NavbarButton.name + " component", () => {
+    it("should render and match snapshot with correct content.", () => {
+        const wrapper = shallow(
+            <NavbarButton
+                buttonURL={"/testButtonURL"}
+                buttonText={"TestButtonText"}
+                buttonTestIdPrefix={"TestButton"}
+            />
         );
 
-        const navbarButton = getByTestId(
-            `${navbarButtonMock.buttonTestIdPrefix}-NavButton`
-        );
-        const navbarButtonText = getByTestId(
-            `${navbarButtonMock.buttonTestIdPrefix}-NavButtonText`
-        );
-
-        expect(navbarButton).toBeInTheDocument();
-        expect(navbarButtonText).not.toBeEmpty();
+        expect(wrapper.find(NavLink).prop("to")).toEqual("/testButtonURL");
+        expect(wrapper.find(NavLink)).toIncludeText("TestButtonText");
+        expect(wrapper).toMatchSnapshot();
     });
 });

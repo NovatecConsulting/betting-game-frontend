@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar component should render and match snapshot with correct navbar items. 1`] = `
+<span>
+  <nav
+    className="flex items-center justify-between flex-wrap border-b-2 border-blue-300 bg-blue-900 p-2"
+    data-testid="Navbar"
+  >
+    <NavbarLogo />
+    <div
+      className="block flex-grow lg:flex lg:items-center lg:w-auto"
+    >
+      <div
+        className="text-sm lg:flex-grow inline"
+      >
+        <NavbarButton
+          buttonTestIdPrefix="Matches"
+          buttonText="Matches"
+          buttonURL="/matches"
+          key="0"
+        />
+        <NavbarButton
+          buttonTestIdPrefix="Standings"
+          buttonText="Standings"
+          buttonURL="/standings"
+          key="1"
+        />
+        <NavbarButton
+          buttonTestIdPrefix="AboutUs"
+          buttonText="About us"
+          buttonURL="/aboutus"
+          key="2"
+        />
+      </div>
+    </div>
+    <NavbarLoginButton />
+  </nav>
+  <Switch>
+    <Route
+      component={[Function]}
+      data-testid="Route"
+      exact={true}
+      key="0"
+      path="/matches"
+    />
+    <Route
+      component={[Function]}
+      data-testid="Route"
+      exact={true}
+      key="1"
+      path="/standings"
+    />
+    <Route
+      component={[Function]}
+      data-testid="Route"
+      exact={true}
+      key="2"
+      path="/aboutus"
+    />
+    <Route
+      component={[Function]}
+      data-testid="Route"
+      exact={true}
+      key="3"
+      path="/login"
+    />
+    <Redirect
+      to="/matches"
+    />
+  </Switch>
+</span>
+`;

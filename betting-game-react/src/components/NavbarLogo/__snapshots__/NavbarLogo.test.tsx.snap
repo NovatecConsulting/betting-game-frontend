@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavbarLogo component should render and match snapshot. 1`] = `
+<div
+  className="text-white mr-6 ml-10 inline"
+  data-testid="NavbarLogoContainer"
+>
+  <span
+    className="font-semibold text-xl tracking-tight"
+    data-testid="NavbarLogo"
+  >
+    NOVATIPP
+  </span>
+</div>
+`;
