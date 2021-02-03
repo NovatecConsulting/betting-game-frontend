@@ -1,45 +1,58 @@
 {
-  "name": "betting-game-react",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.0.4",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^26.0.14",
-    "@types/react-router-dom": "^5.1.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "typescript": "^4.0.2"
-  },
-  "scripts": {
-    "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "postcss-cli": "^7.1.1",
-    "tailwindcss": "^1.6.2"
-  }
+"name": "betting-game-react",
+"version": "0.1.0",
+"private": true,
+"homepage": "/",
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.11.4",
+        "@testing-library/react": "^11.0.4",
+        "@testing-library/user-event": "^7.1.2",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-router-dom": "^5.2.0"
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.20",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "@types/react-router-dom": "^5.1.7",
+        "autoprefixer": "^9.8.6",
+        "eslint-config-prettier": "^7.2.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "postcss-cli": "^7.1.1",
+        "prettier": "^2.2.1",
+        "react-scripts": "^3.4.1",
+        "tailwindcss": "^1.6.2",
+        "typescript": "^4.1.3"
+    },
+    "scripts": {
+        "start": "npm run watch:css && react-scripts start",
+        "build": "npm run build:css && react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
+        "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
+        "lint": "eslint src/**/*.ts src/**/*.tsx"
+    },
+    "eslintConfig": {
+        "extends": "react-app",
+        "plugins": [
+            "prettier"
+        ],
+        "rules": {
+            "prettier/prettier": "warn"
+        }
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
