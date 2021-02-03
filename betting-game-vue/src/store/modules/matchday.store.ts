@@ -11,6 +11,7 @@ import {
 type MatchdayProps = { year: string; matchday: string }
 
 const VuexModule = createModule({
+  namespaced: 'matchday',
   strict: false
 })
 
@@ -54,21 +55,5 @@ export class MatchdayStore extends VuexModule {
     } catch (error) {
       this[MATCHDAY_FETCH_DATA_ERROR](error.message)
     }
-  }
-
-  get getMatchday() {
-    return this.matchday
-  }
-
-  get isLoading() {
-    return this.matchdayIsLoading
-  }
-
-  get hasError() {
-    return this.matchdayHasError
-  }
-
-  get errorMessage() {
-    return this.matchdayErrorMsg
   }
 }

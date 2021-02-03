@@ -1,11 +1,12 @@
 import { createModule, action, mutation } from 'vuex-class-component'
 import { USER_LOGIN, USER_LOGOUT, USER_SET } from '../actions'
 const VuexModule = createModule({
+  namespaced: 'user',
   strict: false
 })
 
 export class UserStore extends VuexModule {
-  private user: string = '';
+  user: string = '';
 
   @mutation [USER_SET](value: string) {
     this.user = value
@@ -18,10 +19,6 @@ export class UserStore extends VuexModule {
 
   @action async [USER_LOGOUT]() {
     this[USER_SET]('')
-  }
-
-  get username() {
-    return this.user
   }
 
   get isLoggedIn(): Boolean {

@@ -10,6 +10,7 @@ import {
 } from '../actions'
 
 const VuexModule = createModule({
+  namespaced: 'matchdayOverview',
   strict: false
 })
 
@@ -53,21 +54,5 @@ export class MatchdayOverviewStore extends VuexModule {
     } catch (error) {
       this[OVERVIEW_FETCH_DATA_ERROR](error.message)
     }
-  }
-
-  get getMatchdayOverview(): MatchdayOverview | null {
-    return this.matchdayOverview
-  }
-
-  get getMatchdayOverviewisLoading() {
-    return this.matchdayOverviewIsLoading
-  }
-
-  get getMatchdayOverviewHasError() {
-    return this.matchdayOverviewHasError
-  }
-
-  get getMatchdayOverviewErrorMessage() {
-    return this.matchdayOverviewErrorMsg
   }
 }

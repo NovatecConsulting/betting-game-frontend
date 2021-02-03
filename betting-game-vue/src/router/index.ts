@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { store } from '../store/store.vuex'
+import { vxm } from '../store/store.vuex'
 
 import Homepage from '../pages/Homepage.vue'
 
@@ -50,7 +50,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.getters.isLoggedIn) {
+    if (!vxm.user.user) {
       next({ name: 'Login' })
     } else {
       next()

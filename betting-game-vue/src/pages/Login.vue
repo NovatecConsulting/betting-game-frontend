@@ -48,7 +48,7 @@ export default class Login extends Vue {
   user = vxm.user
 
   async login() {
-    await this.user[USER_LOGIN]({
+    await this.$store.dispatch(`user/${USER_LOGIN}`, {
       username: this.username,
       password: this.password
     })

@@ -2,6 +2,7 @@
   <div class="matchday">
     <!-- MATCHDAY SKELETON TABLE, DISPLAYED WHILE MATCHDAY IS LOADING -->
     <div
+      id="skeleton-table"
       class="inline-block shadow-lg rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-900"
       v-if="matchdayIsLoading || !matchday"
     >
@@ -55,7 +56,7 @@
     </div>
 
     <!-- MATCHDAY TABLE -->
-    <div class="inline-block shadow-lg rounded-lg overflow-hidden" v-else>
+    <div id="matchday-table" class="inline-block shadow-lg rounded-lg overflow-hidden" v-else>
       <table class="leading-normal table-auto max-w-lg mx-auto">
         <thead>
           <tr>
@@ -73,6 +74,7 @@
               class="px-6 py-5 border-b-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-left text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider"
             >
               <button
+                id="refresh-button"
                 class="float-right cursor-pointer"
                 :class="{ 'animate-spin': matchdayIsLoading }"
                 @click="getMatchday()"
@@ -117,23 +119,23 @@ export default class MatchdayTable extends Vue {
   matchdayStore = vxm.matchdayStore
 
   created() {
-    this.$store.dispatch(MATCHDAY_GET_CURRENT)
+    this.$store.dispatch(`matchday/${MATCHDAY_GET_CURRENT}`)
   }
 
   getMatchday() {
-    if (vxm.matchdayStore.getMatchday) {
-      this.$store.dispatch(MATCHDAY_GET_SPECIFIC, {
+    if (this.matchdayStore.matchday) {
+      this.$store.dispatch(`matchday/${MATCHDAY_GET_SPECIFIC}`, {
         year: 2020,
-        matchday: vxm.matchdayStore.getMatchday.id
+        matchday: this.matchdayStore.matchday.id
       })
     }
   }
 
   get matchday(): Matchday | null {
-    return this.matchdayStore.getMatchday
+    return this.matchdayStore.matchday
   }
   get matchdayIsLoading(): boolean {
-    return this.matchdayStore.isLoading
+    return this.matchdayStore.matchdayIsLoading
   }
 }
 </script>
