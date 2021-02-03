@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component should render and match snapshot. 1`] = `
+<div>
+  <BrowserRouter>
+    <Navbar />
+  </BrowserRouter>
+</div>
+`;

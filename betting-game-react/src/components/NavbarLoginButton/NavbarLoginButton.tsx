@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { LOGIN } from "../../config/routes";
+import { LOGIN } from "../../routes";
 
 const NavbarLoginButton: React.FC = () => (
     <div className="float-right">

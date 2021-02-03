@@ -1,14 +1,12 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
-import Standings from "./Standings";
+import { shallow } from "enzyme";
+import { Standings } from ".";
 
-describe("Component that displays the standings", () => {
-    test("it should mount", () => {
-        render(<Standings />);
+describe(Standings.name + " component", () => {
+    it("should render and match snapshot with correct content text.", () => {
+        const wrapper = shallow(<Standings />);
 
-        const standings = screen.getByTestId("Standings");
-
-        expect(standings).toBeInTheDocument();
+        expect(wrapper.find("div")).toIncludeText("Standings Component");
+        expect(wrapper).toMatchSnapshot();
     });
 });

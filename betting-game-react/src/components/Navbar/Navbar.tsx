@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route, RouteProps, Switch } from "react-router-dom";
 
-import routes, { ABOUTUS, MATCHES, STANDINGS } from "../../config/routes";
+import { routes, ABOUTUS, MATCHES, STANDINGS } from "../../routes";
 import NavbarButton, { NavbarButtonProps } from "../NavbarButton/NavbarButton";
 import NavbarLoginButton from "../NavbarLoginButton/NavbarLoginButton";
 import NavbarLogo from "../NavbarLogo/NavbarLogo";

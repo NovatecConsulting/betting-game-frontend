@@ -55,4 +55,4 @@ jobs:
 
       - name: Run React tests
         working-directory: ./betting-game-react
-        run: yarn test
+        run: yarn test-ci

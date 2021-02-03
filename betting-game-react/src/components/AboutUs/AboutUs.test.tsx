@@ -1,14 +1,12 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
-import AboutUs from "./AboutUs";
+import { shallow } from "enzyme";
+import { AboutUs } from ".";
 
-describe("Component that shows information about our company", () => {
-    test("the about us component should be visible to the user as soon as the component mounted", () => {
-        render(<AboutUs />);
+describe(AboutUs.name + " component", () => {
+    it("should render and match snapshot with correct content text.", () => {
+        const wrapper = shallow(<AboutUs />);
 
-        const aboutUs = screen.getByTestId("AboutUs");
-
-        expect(aboutUs).toBeInTheDocument();
+        expect(wrapper.find("div")).toIncludeText("About us Component");
+        expect(wrapper).toMatchSnapshot();
     });
 });
