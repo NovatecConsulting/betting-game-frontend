@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        "k--kato.intellij-idea-keybindings",
+        "pkief.material-icon-theme",
+        "msjsdiag.debugger-for-chrome",
+        "aaron-bond.better-comments",
+        "gruntfuggly.todo-tree",
+        "michelemelluso.code-beautifier",
+        "orta.vscode-jest",
+        "eg2.vscode-npm-script",
+        "christian-kohler.npm-intellisense",
+        "visualstudioexptteam.vscodeintellicode",
+        "redhat.vscode-xml",
+        "dbaeumer.vscode-eslint",
+        "editorconfig.editorconfig",
+        "teamchilla.blueprint"
+    ]
+}
