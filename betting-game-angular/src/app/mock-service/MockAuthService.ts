@@ -1,5 +1,8 @@
+import { of } from 'rxjs';
+
 export class MockAuthService {
-  isLoggedIn = true;
+  isAuthenticated$ = of(true);
+
   userSession = {
     authToken: '27turtles',
     userContext: {
