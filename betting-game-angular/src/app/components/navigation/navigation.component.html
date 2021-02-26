@@ -1,5 +1,6 @@
-<nav class="navbar h-16 w-screen bg-gray-900 p-3 text-center overflow-hidden">
-  <ul class="navbar__content mx-auto flex flex-row">
+<nav class="navbar h-16 w-screen bg-gray-900 p-3 text-center overflow-hidden navbar-inverse">
+  <div class="container-fluid">
+    <ul class="navbar__content mx-auto flex flex-row">
     <li class="navbar-link-wrapper ml-4">
         <a routerLink="/" class="navbar__link relative text-xl text-blue-300 hover:text-white">Home</a>
     </li>
@@ -9,5 +10,9 @@
     <li class="navbar-link-wrapper ml-4">
       <a routerLink="/table" class="navbar__link relative text-xl text-blue-300 hover:text-white">Table</a>
     </li>
+    <li class="navbar-link-wrapper ml-4 flex-grow text-right">
+      <app-user-profile class="navbar__link relative text-xl text-blue-300"></app-user-profile>
+    </li>
   </ul>
+</div>
 </nav>
