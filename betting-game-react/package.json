@@ -9,6 +9,8 @@
         "@testing-library/user-event": "^7.1.2",
         "react": "^16.14.0",
         "react-dom": "^16.14.0",
+        "jwt-decode": "^3.0.0",
+        "oidc-client": "^1.10.1",
         "react-router-dom": "^5.2.0"
     },
     "devDependencies": {
