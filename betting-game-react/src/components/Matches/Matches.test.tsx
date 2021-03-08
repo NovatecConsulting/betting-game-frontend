@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { Matches } from ".";
+import Matches from "./Matches";
 
 describe(Matches.name + " component", () => {
     it("should render and match snapshot with correct content text.", () => {

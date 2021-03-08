@@ -3,7 +3,6 @@
 exports[`Standings component should render and match snapshot with correct content text. 1`] = `
 <div
   className="min-h-screen min-w-screen bg-white text-center text-6xl text-black grid items-center tracking-wider"
-  data-testid="Standings"
 >
   Standings Component
 </div>

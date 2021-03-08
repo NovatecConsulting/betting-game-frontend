@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavItem component should render and match snapshot with correct content. 1`] = `
+<NavLink
+  activeClassName="border-gray-400 text-indigo-100"
+  className="mr-4 lg:inline-block lg:mt-0 py-2 border-b-2 border-transparent inline-block text-gray-400 hover:text-white"
+  to="/testButtonURL"
+>
+  <span>
+    TestButtonText
+  </span>
+</NavLink>
+`;

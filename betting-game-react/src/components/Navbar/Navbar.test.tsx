@@ -1,135 +1,244 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { fireEvent, render } from "@testing-library/react";
-import { MemoryRouter, Router } from "react-router-dom";
-import { createMemoryHistory } from "history";
-import { ABOUTUS, LOGIN, MATCHES, STANDINGS } from "../../routes";
+import { Link } from "react-router-dom";
 import { Navbar } from ".";
-import { NavbarLogo } from "../NavbarLogo";
-import { NavbarButton } from "../NavbarButton";
-import { NavbarLoginButton } from "../NavbarLoginButton";
+import { NavbarLogo } from "./NavbarLogo";
+import { useRoutes } from "../../routes";
+import { Has } from "../../auth/Has";
+import { Button } from "../Button";
+import { UserProfile } from "./UserProfile";
+import { Profile } from "oidc-client";
+import { AuthorizationManager } from "../../auth";
+
+jest.mock("../../routes");
+jest.mock("../../auth", () => ({
+    AuthorizationManager: {
+        getUser: jest.fn(),
+    },
+}));
 
 describe(Navbar.name + " component", () => {
-    it("should render and match snapshot with correct navbar items.", () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it("should render and match snapshot with logo and login button, if no user exists", () => {
+        const routes = [
+            {
+                path: "/test",
+                title: "Test",
+                isNavItem: true,
+                hasPermission: [],
+            },
+        ];
+        const useStateMock: any = () => [null, jest.fn()];
+        const useErrorMock: any = () => [undefined, jest.fn()];
+
+        jest.spyOn(React, "useState")
+            .mockImplementationOnce(useStateMock)
+            .mockImplementationOnce(useErrorMock);
+        (useRoutes as jest.Mock).mockReturnValueOnce(routes);
+
         const wrapper = shallow(<Navbar />);
 
+        expect(wrapper.find(Link).prop("to")).toEqual("/");
         expect(wrapper.find(NavbarLogo)).toExist();
-        expect(wrapper.find(NavbarButton)).toHaveLength(3);
-        expect(wrapper.find(NavbarButton).at(0).prop("buttonText")).toEqual(
-            "Matches"
-        );
-        expect(wrapper.find(NavbarButton).at(0).prop("buttonURL")).toEqual(
-            "/matches"
-        );
-        expect(wrapper.find(NavbarButton).at(1).prop("buttonText")).toEqual(
-            "Standings"
-        );
-        expect(wrapper.find(NavbarButton).at(1).prop("buttonURL")).toEqual(
-            "/standings"
-        );
-        expect(wrapper.find(NavbarButton).at(2).prop("buttonText")).toEqual(
-            "About us"
-        );
-        expect(wrapper.find(NavbarButton).at(2).prop("buttonURL")).toEqual(
-            "/aboutus"
-        );
-        expect(wrapper.find(NavbarLoginButton)).toExist();
+        expect(wrapper.find(Button)).toHaveLength(1);
+        expect(wrapper.find(Button).prop("label")).toEqual("Login");
         expect(wrapper).toMatchSnapshot();
     });
 
-    test('it should route when the "Matches" button was clicked', () => {
-        const { getByTestId } = render(<Navbar />, { wrapper: MemoryRouter });
-        const matchesButton = getByTestId(`Matches-NavButton`);
+    it("should render and match snapshot with logo, logout button and user profile, if a user exists.", () => {
+        const routes = [
+            {
+                path: "/test",
+                title: "Test",
+                isNavItem: true,
+                hasPermission: [],
+            },
+        ];
+        const profileMock = {
+            name: "TestName",
+            email: "test@test.com",
+            picture: "test.png",
+        } as Profile;
+        const userMock = { profile: profileMock } as any;
 
-        fireEvent.click(matchesButton);
+        const useStateMock: any = () => [userMock, jest.fn()];
+        const useErrorMock: any = () => [undefined, jest.fn()];
 
-        expect(getByTestId("Matches")).toBeInTheDocument();
+        jest.spyOn(React, "useState")
+            .mockImplementationOnce(useStateMock)
+            .mockImplementationOnce(useErrorMock);
+        (useRoutes as jest.Mock).mockReturnValueOnce(routes);
+
+        const wrapper = shallow(<Navbar />);
+
+        expect(wrapper.find(Link).prop("to")).toEqual("/");
+        expect(wrapper.find(NavbarLogo)).toExist();
+        expect(wrapper.find(Has)).toHaveLength(1);
+        expect(wrapper).not.toIncludeText("Error:");
+        expect(wrapper.find(Button)).toHaveLength(1);
+        expect(wrapper.find(Button).prop("label")).toEqual("Logout");
+        expect(wrapper.find(UserProfile)).toExist();
+        expect(wrapper.find(UserProfile).prop("profile")).toEqual(profileMock);
+        expect(wrapper).toMatchSnapshot();
     });
 
-    test('it should route when the "Standings" button was clicked', () => {
-        const { getByTestId } = render(<Navbar />, { wrapper: MemoryRouter });
-        const matchesButton = getByTestId(`Standings-NavButton`);
+    it("should render and match snapshot in case of an error.", () => {
+        const routes = [
+            {
+                path: "/test",
+                title: "Test",
+                isNavItem: true,
+                hasPermission: [],
+            },
+        ];
+        const profileMock = {
+            name: "TestName",
+            email: "test@test.com",
+            picture: "test.png",
+        } as Profile;
+        const userMock = { profile: profileMock } as any;
 
-        fireEvent.click(matchesButton);
+        const useStateMock: any = () => [userMock, jest.fn()];
+        const useErrorMock: any = () => ["TestError", jest.fn()];
 
-        expect(getByTestId("Standings")).toBeInTheDocument();
+        jest.spyOn(React, "useState")
+            .mockImplementationOnce(useStateMock)
+            .mockImplementationOnce(useErrorMock);
+
+        (useRoutes as jest.Mock).mockReturnValueOnce(routes);
+
+        const wrapper = shallow(<Navbar />);
+
+        expect(wrapper.find(Link).prop("to")).toEqual("/");
+        expect(wrapper.find(NavbarLogo)).toExist();
+        expect(wrapper.find(Has)).toHaveLength(1);
+        expect(wrapper).toIncludeText("Error: TestError");
+        expect(wrapper.find(Button)).toHaveLength(0);
+        expect(wrapper.find(UserProfile)).not.toExist();
+        expect(wrapper).toMatchSnapshot();
     });
 
-    test('it should route when the "About us" button was clicked', () => {
-        const { getByTestId } = render(<Navbar />, { wrapper: MemoryRouter });
-        const matchesButton = getByTestId(`AboutUs-NavButton`);
+    it("should render and match snapshot with multiple navbar items.", () => {
+        const routes = [
+            {
+                path: "/test",
+                title: "Test",
+                isNavItem: true,
+                hasPermission: [],
+            },
+            {
+                path: "/test2",
+                title: "Test2",
+                isNavItem: true,
+                hasPermission: [],
+            },
+            {
+                path: "/test3",
+                title: "Test3",
+                isNavItem: true,
+                hasPermission: [],
+            },
+        ];
 
-        fireEvent.click(matchesButton);
+        (useRoutes as jest.Mock).mockReturnValueOnce(routes);
+        const useStateMock: any = () => [null, jest.fn()];
+        const useErrorMock: any = () => [undefined, jest.fn()];
 
-        expect(getByTestId("AboutUs")).toBeInTheDocument();
+        jest.spyOn(React, "useState")
+            .mockImplementationOnce(useStateMock)
+            .mockImplementationOnce(useErrorMock);
+
+        const wrapper = shallow(<Navbar />);
+
+        expect(wrapper.find(Has)).toHaveLength(3);
+        expect(wrapper).toMatchSnapshot();
     });
 
-    test('it should route when the "Login" button was clicked', () => {
-        const { getByTestId } = render(<Navbar />, { wrapper: MemoryRouter });
-        const matchesButton = getByTestId(`Login-NavButton`);
+    it("should render and match snapshot without navbar items, if isNavItem=false.", () => {
+        const routes = [
+            {
+                path: "/test",
+                title: "Test",
+                isNavItem: false,
+                hasPermission: [],
+            },
+            {
+                path: "/test2",
+                title: "Test2",
+                isNavItem: false,
+                hasPermission: [],
+            },
+        ];
 
-        fireEvent.click(matchesButton);
+        (useRoutes as jest.Mock).mockReturnValueOnce(routes);
+        const useStateMock: any = () => [null, jest.fn()];
+        const useErrorMock: any = () => [undefined, jest.fn()];
 
-        expect(getByTestId("Login")).toBeInTheDocument();
+        jest.spyOn(React, "useState")
+            .mockImplementationOnce(useStateMock)
+            .mockImplementationOnce(useErrorMock);
+
+        const wrapper = shallow(<Navbar />);
+
+        expect(wrapper.find(Has)).toHaveLength(0);
+        expect(wrapper).toMatchSnapshot();
     });
 
-    test("it should redirect to matches if the path does not exist", () => {
-        const history = createMemoryHistory();
-        history.push("/bad/route");
-        render(
-            <Router history={history}>
-                <Navbar />
-            </Router>
+    it("should fetch user and set result to local state.", async () => {
+        const routes = [] as any;
+        const profileMock = {
+            name: "TestName",
+            email: "test@test.com",
+            picture: "test.png",
+        } as Profile;
+        const userMock = { profile: profileMock } as any;
+        const useStateMock: any = (initState: any) => [initState, setUserMock];
+        const setUserMock = jest.fn();
+
+        (useRoutes as jest.Mock).mockReturnValueOnce(routes);
+        jest.spyOn(React, "useState").mockImplementationOnce(useStateMock);
+        jest.spyOn(React, "useEffect").mockImplementationOnce((f) => f());
+        (AuthorizationManager.getUser as jest.Mock).mockReturnValue(
+            Promise.resolve(userMock)
         );
 
-        expect(history.location.pathname).toBe("/matches");
+        await shallow(<Navbar />);
+
+        expect(AuthorizationManager.getUser).toBeCalledTimes(1);
+        expect(setUserMock).toHaveBeenCalledTimes(1);
+        expect(setUserMock).toHaveBeenCalledWith(userMock);
     });
 
-    test("it should route to \\matches and render the matches component", () => {
-        const history = createMemoryHistory();
-        history.push(MATCHES.path);
-        render(
-            <Router history={history}>
-                <Navbar />
-            </Router>
+    it("should fetch user and set result not to local state in case of error.", async () => {
+        const routes = [] as any;
+        const setUserMock = jest.fn();
+        const useStateMock: any = (initState: any) => [initState, setUserMock];
+        const setErrorMock = jest.fn();
+        const useStateMock2: any = (initState: any) => [
+            initState,
+            setErrorMock,
+        ];
+        const mockPromise = Promise.reject({ message: "TestError" });
+
+        (useRoutes as jest.Mock).mockReturnValueOnce(routes);
+        jest.spyOn(React, "useState")
+            .mockImplementationOnce(useStateMock)
+            .mockImplementationOnce(useStateMock2);
+        jest.spyOn(React, "useEffect").mockImplementationOnce((f) => f());
+        (AuthorizationManager.getUser as jest.Mock).mockReturnValueOnce(
+            mockPromise
         );
 
-        expect(history.location.pathname).toBe("/matches");
-    });
+        await shallow(<Navbar />);
 
-    test("it should route to \\standings and render the standings component", () => {
-        const history = createMemoryHistory();
-        history.push(STANDINGS.path);
-        render(
-            <Router history={history}>
-                <Navbar />
-            </Router>
-        );
+        await mockPromise.catch(() => {}); // Wait for promise to be rejected
 
-        expect(history.location.pathname).toBe("/standings");
-    });
-
-    test("it should route to \\aboutus and render the about us component", () => {
-        const history = createMemoryHistory();
-        history.push(ABOUTUS.path);
-        render(
-            <Router history={history}>
-                <Navbar />
-            </Router>
-        );
-
-        expect(history.location.pathname).toBe("/aboutus");
-    });
-
-    test("it should route to \\login and render the login component", () => {
-        const history = createMemoryHistory();
-        history.push(LOGIN.path);
-        render(
-            <Router history={history}>
-                <Navbar />
-            </Router>
-        );
-
-        expect(history.location.pathname).toBe("/login");
+        expect(AuthorizationManager.getUser).toBeCalledTimes(1);
+        expect(setUserMock).toHaveBeenCalledTimes(0);
+        expect(setErrorMock).toHaveBeenCalledTimes(1);
+        expect(setErrorMock).toHaveBeenCalledWith("TestError");
     });
 });

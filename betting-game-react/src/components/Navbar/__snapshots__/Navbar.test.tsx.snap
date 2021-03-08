@@ -1,72 +1,192 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar component should render and match snapshot with correct navbar items. 1`] = `
+exports[`Navbar component should render and match snapshot in case of an error. 1`] = `
 <span>
   <nav
-    className="flex items-center justify-between flex-wrap border-b-2 border-blue-300 bg-blue-900 p-2"
-    data-testid="Navbar"
+    className="flex items-center justify-between flex-wrap bg-blue-900 p-2"
   >
-    <NavbarLogo />
+    <Link
+      to="/"
+    >
+      <NavbarLogo />
+    </Link>
     <div
       className="block flex-grow lg:flex lg:items-center lg:w-auto"
     >
       <div
         className="text-sm lg:flex-grow inline"
       >
-        <NavbarButton
-          buttonTestIdPrefix="Matches"
-          buttonText="Matches"
-          buttonURL="/matches"
-          key="0"
-        />
-        <NavbarButton
-          buttonTestIdPrefix="Standings"
-          buttonText="Standings"
-          buttonURL="/standings"
-          key="1"
-        />
-        <NavbarButton
-          buttonTestIdPrefix="AboutUs"
-          buttonText="About us"
-          buttonURL="/aboutus"
-          key="2"
+        <Has
+          Yes={[Function]}
+          key="/test"
         />
       </div>
     </div>
-    <NavbarLoginButton />
+    <div
+      className="float-right"
+    >
+      <div>
+        Error: 
+        TestError
+      </div>
+    </div>
   </nav>
-  <Switch>
-    <Route
-      component={[Function]}
-      data-testid="Route"
-      exact={true}
-      key="0"
-      path="/matches"
-    />
-    <Route
-      component={[Function]}
-      data-testid="Route"
-      exact={true}
-      key="1"
-      path="/standings"
-    />
-    <Route
-      component={[Function]}
-      data-testid="Route"
-      exact={true}
-      key="2"
-      path="/aboutus"
-    />
-    <Route
-      component={[Function]}
-      data-testid="Route"
-      exact={true}
-      key="3"
-      path="/login"
-    />
-    <Redirect
-      to="/matches"
-    />
-  </Switch>
+</span>
+`;
+
+exports[`Navbar component should render and match snapshot with logo and login button, if no user exists 1`] = `
+<span>
+  <nav
+    className="flex items-center justify-between flex-wrap bg-blue-900 p-2"
+  >
+    <Link
+      to="/"
+    >
+      <NavbarLogo />
+    </Link>
+    <div
+      className="block flex-grow lg:flex lg:items-center lg:w-auto"
+    >
+      <div
+        className="text-sm lg:flex-grow inline"
+      >
+        <Has
+          Yes={[Function]}
+          key="/test"
+        />
+      </div>
+    </div>
+    <div
+      className="float-right"
+    >
+      <Button
+        className="lg:mr-5 md:mr-4 ml-5"
+        label="Login"
+        onClick={[Function]}
+      />
+    </div>
+  </nav>
+</span>
+`;
+
+exports[`Navbar component should render and match snapshot with logo, logout button and user profile, if a user exists. 1`] = `
+<span>
+  <nav
+    className="flex items-center justify-between flex-wrap bg-blue-900 p-2"
+  >
+    <Link
+      to="/"
+    >
+      <NavbarLogo />
+    </Link>
+    <div
+      className="block flex-grow lg:flex lg:items-center lg:w-auto"
+    >
+      <div
+        className="text-sm lg:flex-grow inline"
+      >
+        <Has
+          Yes={[Function]}
+          key="/test"
+        />
+      </div>
+    </div>
+    <div
+      className="float-right"
+    >
+      <div
+        className="flex items-center justify-between flex-wrap"
+      >
+        <UserProfile
+          className="hidden md:flex"
+          profile={
+            Object {
+              "email": "test@test.com",
+              "name": "TestName",
+              "picture": "test.png",
+            }
+          }
+        />
+        <Button
+          className="lg:mr-5 md:mr-4 ml-5"
+          label="Logout"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </nav>
+</span>
+`;
+
+exports[`Navbar component should render and match snapshot with multiple navbar items. 1`] = `
+<span>
+  <nav
+    className="flex items-center justify-between flex-wrap bg-blue-900 p-2"
+  >
+    <Link
+      to="/"
+    >
+      <NavbarLogo />
+    </Link>
+    <div
+      className="block flex-grow lg:flex lg:items-center lg:w-auto"
+    >
+      <div
+        className="text-sm lg:flex-grow inline"
+      >
+        <Has
+          Yes={[Function]}
+          key="/test"
+        />
+        <Has
+          Yes={[Function]}
+          key="/test2"
+        />
+        <Has
+          Yes={[Function]}
+          key="/test3"
+        />
+      </div>
+    </div>
+    <div
+      className="float-right"
+    >
+      <Button
+        className="lg:mr-5 md:mr-4 ml-5"
+        label="Login"
+        onClick={[Function]}
+      />
+    </div>
+  </nav>
+</span>
+`;
+
+exports[`Navbar component should render and match snapshot without navbar items, if isNavItem=false. 1`] = `
+<span>
+  <nav
+    className="flex items-center justify-between flex-wrap bg-blue-900 p-2"
+  >
+    <Link
+      to="/"
+    >
+      <NavbarLogo />
+    </Link>
+    <div
+      className="block flex-grow lg:flex lg:items-center lg:w-auto"
+    >
+      <div
+        className="text-sm lg:flex-grow inline"
+      />
+    </div>
+    <div
+      className="float-right"
+    >
+      <Button
+        className="lg:mr-5 md:mr-4 ml-5"
+        label="Login"
+        onClick={[Function]}
+      />
+    </div>
+  </nav>
 </span>
 `;
