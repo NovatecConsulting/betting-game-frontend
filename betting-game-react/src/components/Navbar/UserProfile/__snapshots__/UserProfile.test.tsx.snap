@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserProfile component should render and match snapshot with given profile. 1`] = `
+<div
+  className="flex items-center justify-between flex-wrap "
+>
+  <img
+    alt="test@test.com"
+    height={40}
+    src="test.png"
+    width={40}
+  />
+  <div
+    className="text-white text-sm ml-2"
+  >
+    TestName
+  </div>
+</div>
+`;

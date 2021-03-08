@@ -4,6 +4,7 @@ import { Has } from "../auth/Has";
 import { LoginCallback, READ_MATCHDAYS } from "../auth";
 import { MainLayout } from "../layouts";
 import { ErrorBoundary } from "react-error-boundary";
+import { Loading } from "../components/Loading";
 
 const Home = lazy(
     () => import(/* webpackPrefetch: true */ "../components/Home")
@@ -15,9 +16,8 @@ const Standings = lazy(
     () => import(/* webpackPrefetch: true */ "../components/Standings")
 );
 
-// TODO: implement an Error, NoMatch and Loading component
+// TODO: implement an Error and NoMatch component
 const Error = () => <div>Error</div>;
-const Loading = () => <div>Loading...</div>;
 const NoMatch = () => <div>404</div>;
 
 export const ROUTE_INDEX = "/";

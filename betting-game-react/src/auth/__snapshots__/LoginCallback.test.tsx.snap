@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginCallback component should render and match snapshot with loading component before anything happens. 1`] = `<Loading />`;
+
+exports[`LoginCallback component should render and match snapshot with successful redirect. 1`] = `
+<Redirect
+  to="/"
+/>
+`;
+
+exports[`LoginCallback component should render and match snapshot, if AuthorizationManager throws an error. 1`] = `
+<div>
+  TestError
+</div>
+`;

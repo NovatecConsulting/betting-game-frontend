@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RouteSwitch component should render and match snapshot, given no routes. 1`] = `<Switch />`;
+
+exports[`RouteSwitch component should render and match snapshot, given one route. 1`] = `
+<Switch>
+  <Route
+    component={[Function]}
+    exact={true}
+    key="0"
+    path="/test"
+  />
+</Switch>
+`;
+
+exports[`RouteSwitch component should render and match snapshot, given two routes. 1`] = `
+<Switch>
+  <Route
+    component={[Function]}
+    exact={true}
+    key="0"
+    path="/test"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    key="1"
+    path="/test2"
+  />
+</Switch>
+`;

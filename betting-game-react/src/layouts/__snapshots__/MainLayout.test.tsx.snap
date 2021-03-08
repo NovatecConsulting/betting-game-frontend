@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainLayout component should render and match snapshot, given no children. 1`] = `
+<Fragment>
+  <Navbar />
+</Fragment>
+`;
+
+exports[`MainLayout component should render and match snapshot, given one child. 1`] = `
+<Fragment>
+  <Navbar />
+  <div>
+    Test
+  </div>
+</Fragment>
+`;

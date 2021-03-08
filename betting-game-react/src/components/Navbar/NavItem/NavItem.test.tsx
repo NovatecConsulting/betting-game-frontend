@@ -1,15 +1,14 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { NavLink } from "react-router-dom";
-import { NavbarButton } from ".";
+import { NavItem } from ".";
 
-describe(NavbarButton.name + " component", () => {
+describe(NavItem.name + " component", () => {
     it("should render and match snapshot with correct content.", () => {
         const wrapper = shallow(
-            <NavbarButton
+            <NavItem
                 buttonURL={"/testButtonURL"}
                 buttonText={"TestButtonText"}
-                buttonTestIdPrefix={"TestButton"}
             />
         );
 
