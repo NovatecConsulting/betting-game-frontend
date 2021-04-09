@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component should render and match snapshot with size attribute set. 1`] = `
+<div
+  className="flex justify-center mt-8"
+>
+  <div
+    className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-32 w-32"
+  />
+  <span
+    className="sr-only"
+  >
+    Loading...
+  </span>
+</div>
+`;
+
+exports[`Loading component should render and match snapshot. 1`] = `
+<div
+  className="flex justify-center mt-8"
+>
+  <div
+    className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-16 w-16"
+  />
+  <span
+    className="sr-only"
+  >
+    Loading...
+  </span>
+</div>
+`;

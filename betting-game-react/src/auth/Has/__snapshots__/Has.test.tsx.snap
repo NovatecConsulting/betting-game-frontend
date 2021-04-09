@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Has component should render and match snapshot, if AuthorizationManager throws an error. 1`] = `
+<Has
+  No={[Function]}
+  Yes={[Function]}
+  permissions={
+    Array [
+      "TestPermission1",
+      "TestPermission2",
+    ]
+  }
+>
+  <No>
+    <div>
+      AccessDenied
+    </div>
+  </No>
+</Has>
+`;
+
+exports[`Has component should render and match snapshot, if jwt_decode throws an error. 1`] = `
+<Has
+  No={[Function]}
+  Yes={[Function]}
+  permissions={
+    Array [
+      "TestPermission1",
+      "TestPermission2",
+    ]
+  }
+>
+  <No>
+    <div>
+      AccessDenied
+    </div>
+  </No>
+</Has>
+`;
+
+exports[`Has component should render and match snapshot, if user has all the needed permission. 1`] = `
+<Has
+  No={[Function]}
+  Yes={[Function]}
+  permissions={
+    Array [
+      "TestPermission1",
+      "TestPermission2",
+    ]
+  }
+>
+  <Yes>
+    <div>
+      AccessGranted
+    </div>
+  </Yes>
+</Has>
+`;
+
+exports[`Has component should render and match snapshot, if user has just one of the needed permissions. 1`] = `
+<Has
+  No={[Function]}
+  Yes={[Function]}
+  permissions={
+    Array [
+      "TestPermission1",
+      "TestPermission2",
+    ]
+  }
+>
+  <No>
+    <div>
+      AccessDenied
+    </div>
+  </No>
+</Has>
+`;
+
+exports[`Has component should render and match snapshot, if user has more than the needed permissions. 1`] = `
+<Has
+  No={[Function]}
+  Yes={[Function]}
+  permissions={
+    Array [
+      "TestPermission1",
+    ]
+  }
+>
+  <Yes>
+    <div>
+      AccessGranted
+    </div>
+  </Yes>
+</Has>
+`;
+
+exports[`Has component should render and match snapshot, if user has no access token. 1`] = `
+<Has
+  No={[Function]}
+  Yes={[Function]}
+  permissions={
+    Array [
+      "TestPermission1",
+      "TestPermission2",
+    ]
+  }
+>
+  <No>
+    <div>
+      AccessDenied
+    </div>
+  </No>
+</Has>
+`;
+
+exports[`Has component should render and match snapshot, if user has no permissions. 1`] = `
+<Has
+  No={[Function]}
+  Yes={[Function]}
+  permissions={
+    Array [
+      "TestPermission1",
+      "TestPermission2",
+    ]
+  }
+>
+  <No>
+    <div>
+      AccessDenied
+    </div>
+  </No>
+</Has>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component should render and match snapshot with label and onClick method. 1`] = `
+<div
+  className="cursor-pointer inline-block text-sm px-5 py-2 leading-none border rounded-full text-white border-white hover:text-blue-400 hover:bg-white active:bg-blue-700 "
+  onClick={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+>
+  Test
+</div>
+`;

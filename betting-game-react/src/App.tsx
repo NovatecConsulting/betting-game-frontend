@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
+import { routes, RoutesProvider, RouteSwitch } from "./routes";
+import { AuthContext } from "./auth";
 
 const App: React.FC = () => (
-    <div>
-        <Router>
-            <Navbar />
-        </Router>
-    </div>
+    <AuthContext>
+        <RoutesProvider value={routes}>
+            <Router basename={process.env.PUBLIC_URL}>
+                <RouteSwitch />
+            </Router>
+        </RoutesProvider>
+    </AuthContext>
 );
 
 export default App;
