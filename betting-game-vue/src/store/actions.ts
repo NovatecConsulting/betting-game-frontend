@@ -19,3 +19,10 @@ export const THEME_CHANGE_THEME = '[Theme] Toggle Light/Dark Mode'
 export const USER_SET = '[User] Set User'
 export const USER_LOGIN = '[User] Login User'
 export const USER_LOGOUT = '[User] Logout User'
+
+//TeamStandings Store
+export const TEAMSTANDING_GET_CURRENT = '[TeamStanding] Get Current TeamStanding'
+export const TEAMSTANDING_GET_SPECIFIC = '[TeamStanding] Get Specific TeamStanding'
+export const TEAMSTANDING_FETCH_DATA_PENDING = '[TeamStanding] Fetch Data Pending'
+export const TEAMSTANDING_FETCH_DATA_SUCCESS = '[TeamStanding] Fetch Data Success'
+export const TEAMSTANDING_FETCH_DATA_ERROR = '[TeamStanding] Fetch Data Error'
