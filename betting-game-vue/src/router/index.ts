@@ -26,6 +26,14 @@ export const routes = [
     }
   },
   {
+    path: '/standings',
+    name: 'Standings',
+    component: () => import('../pages/Standings.vue'),
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
     path: '/result',
     name: 'Results',
     component: () => import('../pages/Result.vue'),
