@@ -27,7 +27,7 @@
     "@auth0/auth0-angular": "^1.2.0",
     "@ngxs/store": "^3.7.0",
     "@types/luxon": "^1.25.0",
-    "luxon": "^1.25.0",
+    "luxon": "^1.28.1",
     "ngx-build-plus": "^10.1.1",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.3",
