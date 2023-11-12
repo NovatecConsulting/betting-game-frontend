@@ -13,7 +13,7 @@
   "dependencies": {
     "@tailwindcss/postcss7-compat": "^2.1.2",
     "autoprefixer": "^9",
-    "axios": "^0.21.1",
+    "axios": "^1.6.0",
     "core-js": "^3.13.0",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
